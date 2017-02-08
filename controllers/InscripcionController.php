@@ -48,7 +48,7 @@ class InscripcionController extends \yii\web\Controller
         $paciente = new Paciente();
         $institucion = new Institucion();
 
-        if ($paciente->load(Yii::$app->request->post()) && $institucion->load(Yii::$app->request->post()) && Model::validateMultiple([$paciente, $institucion])) {
+        if ($paciente->load(Yii::$app->request->post()) && $institucion->load(Yii::$app->request->post()) && $paciente->save() && $institucion->save()) {
         	$paciente->save(false);
         	$institucion->id = $paciente->ico_id;
         	$institucion->save(false);
