@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PacienteSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pacientes';
+$this->title = 'Alumno';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Paciente', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Inscripcion', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,15 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'cedula',
             'nombre',
             'apellido',
-            'fecha_nacimiento',
+            [
+                'attribute'=>'fecha_nacimiento',
+                'label'=>'Fecha de Nacimiento',
+            ],
             'lugar_nacimiento',
-            // 'edad',
-            // 'sexo',
-            // 'rte_cedula',
-            // 'ico_id',
-            // 'nca_id',
-
+            'edad',
+            'sexo',
+            'rte_cedula',
+            'ico_id',
+            'nca_id',
+            
             ['class' => 'yii\grid\ActionColumn'],
         ],
+        
     ]); ?>
 </div>

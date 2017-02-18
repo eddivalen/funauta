@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\TerapiaEspecialista */
 
-$this->title = $model->tpa_id;
+$this->title = $model->pteCedula->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Terapia Especialistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], [
+        <?= Html::a('Actualizar', ['update', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,9 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'tpa_id',
-            'eta_cedula',
-            'pte_cedula',
+            [
+            'attribute'=>'tpa_id',
+            'value'=>$model->tpa->descripcion,
+            'label'=>'Terapia',
+            ],
+            [
+            'attribute'=>'eta_cedula',
+            'value'=>$model->etaCedula->cedula,
+            'label'=>'Cedula Especialista',
+            ],
+            [
+            'attribute'=>'eta_cedula',
+            'value'=>$model->pteCedula->cedula,
+            'label'=>'Cedula Paciente',
+            ],
+
         ],
     ]) ?>
 

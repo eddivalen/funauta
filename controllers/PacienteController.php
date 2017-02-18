@@ -8,7 +8,7 @@ use app\models\PacienteSerch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * PacienteController implements the CRUD actions for Paciente model.
  */
@@ -20,6 +20,18 @@ class PacienteController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                        'class' => \yii\filters\AccessControl::className(),
+                        'only' => ['index','create','update','view'],
+                        'rules' => [
+                            // allow authenticated users
+                            [
+                                'allow' => true,
+                                'roles' => ['@'],
+                            ],
+                            // everything else is denied
+                        ],
+                    ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

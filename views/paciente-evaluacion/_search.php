@@ -17,11 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fecha') ?>
 
-    <?= $form->field($model, 'motivo') ?>
-
     <?= $form->field($model, 'pte_cedula') ?>
 
-    <?= $form->field($model, 'ecn_id') ?>
+    <?= $form->field($model, 'motivo') ?>
+
+    <?= $form->field($model, 'descripcion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

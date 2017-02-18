@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\HisTerapiasPaciente */
 
-$this->title = 'Update His Terapias Paciente: ' . $model->pte_cedula;
-$this->params['breadcrumbs'][] = ['label' => 'His Terapias Pacientes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->pte_cedula, 'url' => ['view', 'pte_cedula' => $model->pte_cedula, 'hpa_id' => $model->hpa_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Actualizar';
+$this->params['breadcrumbs'][] = ['label' => 'Historial Terapias Pacientes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->pteCedula->nombre, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="his-terapias-paciente-update">
 

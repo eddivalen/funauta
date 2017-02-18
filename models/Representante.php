@@ -22,11 +22,10 @@ use Yii;
  * @property string $horario_trabajo
  * @property string $actividad
  * @property string $disponibilidad
- * @property integer $nvo_id
+ * @property string $nivel_socioeconomico
  *
  * @property ActRep[] $actReps
  * @property Paciente[] $pacientes
- * @property NivelSocioeconomico $nvo
  */
 class Representante extends \yii\db\ActiveRecord
 {
@@ -44,11 +43,10 @@ class Representante extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cedula', 'nombre', 'apellido', 'nacionalidad', 'edad', 'edo_civil', 'direccion', 'nvo_id'], 'required'],
-            [['cedula', 'edad', 'nvo_id'], 'integer'],
-            [['nacionalidad', 'edo_civil', 'disponibilidad'], 'string'],
+            [['cedula', 'nombre', 'apellido', 'nacionalidad', 'edad', 'edo_civil', 'direccion', 'nivel_socioeconomico'], 'required'],
+            [['cedula', 'edad'], 'integer'],
+            [['nacionalidad', 'edo_civil', 'disponibilidad', 'nivel_socioeconomico'], 'string'],
             [['nombre', 'apellido', 'direccion', 'telefono_local', 'telefono_celular', 'correo', 'ocupacion', 'empresa', 'horario_trabajo', 'actividad'], 'string', 'max' => 45],
-            [['nvo_id'], 'exist', 'skipOnError' => true, 'targetClass' => NivelSocioeconomico::className(), 'targetAttribute' => ['nvo_id' => 'id']],
         ];
     }
 
@@ -73,7 +71,7 @@ class Representante extends \yii\db\ActiveRecord
             'horario_trabajo' => 'Horario Trabajo',
             'actividad' => 'Actividad',
             'disponibilidad' => 'Disponibilidad',
-            'nvo_id' => 'Nvo ID',
+            'nivel_socioeconomico' => 'Nivel Socioeconomico',
         ];
     }
 
@@ -91,13 +89,5 @@ class Representante extends \yii\db\ActiveRecord
     public function getPacientes()
     {
         return $this->hasMany(Paciente::className(), ['rte_cedula' => 'cedula']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getNvo()
-    {
-        return $this->hasOne(NivelSocioeconomico::className(), ['id' => 'nvo_id']);
     }
 }

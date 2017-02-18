@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\ActRep */
 
-$this->title = $model->id;
+$this->title = $model->rteCedula->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Actividades Representante', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Seguro que desea eliminar este dato?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,9 +28,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'ate_id',
-            'rte_cedula',
+            [
+                'attribute'=>'id',
+                'label'=>'ID de Actividad',
+            ], 
+            [
+                'attribute'=>'ate_id',
+                'value'=>$model->ate->nombre_act,
+                'label'=>'Nombre de la Actividad',
+            ], 
+            [
+                'attribute'=>'rte_cedula',
+                'label'=>'Cedula del Representante',
+            ],
         ],
     ]) ?>
 

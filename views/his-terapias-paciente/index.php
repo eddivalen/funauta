@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\HisTerapiasPacienteSerch */
+/* @var $searchModel app\models\HisTerapiasPacienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'His Terapias Pacientes';
+$this->title = 'Historial';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="his-terapias-paciente-index">
@@ -16,19 +17,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create His Terapias Paciente', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Agregar Historia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pte_cedula',
-            'hpa_id',
+            [
+                'attribute'=>'pte_cedula',
+                'label'=>'Cedula del Paciente',
+            ],
             'tiempo',
+            'descripcion',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
+
 </div>

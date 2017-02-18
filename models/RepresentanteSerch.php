@@ -18,8 +18,8 @@ class RepresentanteSerch extends Representante
     public function rules()
     {
         return [
-            [['cedula', 'edad', 'nvo_id'], 'integer'],
-            [['nombre', 'apellido', 'nacionalidad', 'edo_civil', 'direccion', 'telefono_local', 'telefono_celular', 'correo', 'ocupacion', 'empresa', 'horario_trabajo', 'actividad', 'disponibilidad'], 'safe'],
+            [['cedula', 'edad'], 'integer'],
+            [['nombre', 'apellido', 'nacionalidad', 'edo_civil', 'direccion', 'telefono_local', 'telefono_celular', 'correo', 'ocupacion', 'empresa', 'horario_trabajo', 'actividad', 'disponibilidad', 'nivel_socioeconomico'], 'safe'],
         ];
     }
 
@@ -61,7 +61,6 @@ class RepresentanteSerch extends Representante
         $query->andFilterWhere([
             'cedula' => $this->cedula,
             'edad' => $this->edad,
-            'nvo_id' => $this->nvo_id,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
@@ -76,7 +75,8 @@ class RepresentanteSerch extends Representante
             ->andFilterWhere(['like', 'empresa', $this->empresa])
             ->andFilterWhere(['like', 'horario_trabajo', $this->horario_trabajo])
             ->andFilterWhere(['like', 'actividad', $this->actividad])
-            ->andFilterWhere(['like', 'disponibilidad', $this->disponibilidad]);
+            ->andFilterWhere(['like', 'disponibilidad', $this->disponibilidad])
+            ->andFilterWhere(['like', 'nivel_socioeconomico', $this->nivel_socioeconomico]);
 
         return $dataProvider;
     }

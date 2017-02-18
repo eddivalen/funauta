@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
+use yii\helpers\ArrayHelper;
+use app\models\NucleoFamiliar;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Paciente */
@@ -27,24 +29,27 @@ use dosamigos\datepicker\DatePicker;
         //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
         'clientOptions' => [
             'autoclose' => true,
-            'format' => 'dd-M-yyyy'
+            'format' => 'yyyy-mm-dd'
         ]
     ]);?>
 
-    <?= $form->field($model, 'lugar_nacimiento')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'lugar_nacimiento')->textInput(['maxlength' => true])->label('Lugar de Nacimiento') ?>
 
     <?= $form->field($model, 'edad')->textInput() ?>
 
     <?= $form->field($model, 'sexo')->dropDownList([ 'M' => 'M', 'F' => 'F', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'rte_cedula')->textInput() ?>
+    <?= $form->field($model, 'rte_cedula')->textInput()->label('Cedula del Representante') ?>
 
-    <?= $form->field($model, 'ico_id')->textInput() ?>
+    <?= $form->field($model, 'ico_id')->textInput()->label('Nombre de Institucion') ?>
 
-    <?= $form->field($model, 'nca_id')->textInput() ?>
+    <?= $form->field($model, 'nca_id')->dropDownList(
+        ArrayHelper::map(NucleoFamiliar::find()->all(), 'id', 'id'),
+        ['prompt'=>'Elegir Nucleo Familiar']
+    )->label('ID de Nucleo Familiar')?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

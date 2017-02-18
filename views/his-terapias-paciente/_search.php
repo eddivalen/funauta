@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\HisTerapiasPacienteSerch */
+/* @var $model app\models\HisTerapiasPacienteSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,11 +15,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
+    <?= $form->field($model, 'id') ?>
+
     <?= $form->field($model, 'pte_cedula') ?>
 
-    <?= $form->field($model, 'hpa_id') ?>
-
     <?= $form->field($model, 'tiempo') ?>
+
+    <?= $form->field($model, 'descripcion') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

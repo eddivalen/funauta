@@ -2,10 +2,11 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RepresentanteSerch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider yii\data\Activ eDataProvider */
 
 $this->title = 'Representantes';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,8 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Representante', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Inscribir', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -39,9 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'horario_trabajo',
             // 'actividad',
             // 'disponibilidad',
-            // 'nvo_id',
+            // 'nivel_socioeconomico',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
+
 </div>

@@ -12,27 +12,23 @@ use dosamigos\datepicker\DatePicker;
 <div class="paciente-evaluacion-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'fecha')->widget(
+	
+	<?= $form->field($model, 'fecha')->widget(
     DatePicker::className(), [
-        // inline too, not bad
-         'inline' => false, 
-        // modify template for custom rendering
-        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'inline' => false, 
         'clientOptions' => [
             'autoclose' => true,
-            'format' => 'dd-M-yyyy'
+            'format' => 'yyyy-mm-dd'
         ]
-    ]);?>
+    ])->label('Fecha de Evaluacion')?>
+    <?= $form->field($model, 'pte_cedula')->textInput()->label('Cedula del Paciente') ?>
 
     <?= $form->field($model, 'motivo')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pte_cedula')->textInput() ?>
-
-    <?= $form->field($model, 'ecn_id')->textInput() ?>
+    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Agregar' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

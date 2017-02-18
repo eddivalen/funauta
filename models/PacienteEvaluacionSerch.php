@@ -18,8 +18,8 @@ class PacienteEvaluacionSerch extends PacienteEvaluacion
     public function rules()
     {
         return [
-            [['fecha', 'motivo'], 'safe'],
-            [['pte_cedula', 'ecn_id'], 'integer'],
+            [['fecha', 'motivo', 'descripcion'], 'safe'],
+            [['pte_cedula'], 'integer'],
         ];
     }
 
@@ -61,10 +61,10 @@ class PacienteEvaluacionSerch extends PacienteEvaluacion
         $query->andFilterWhere([
             'fecha' => $this->fecha,
             'pte_cedula' => $this->pte_cedula,
-            'ecn_id' => $this->ecn_id,
         ]);
 
-        $query->andFilterWhere(['like', 'motivo', $this->motivo]);
+        $query->andFilterWhere(['like', 'motivo', $this->motivo])
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

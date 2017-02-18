@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Representante */
 
-$this->title = 'Update Representante: ' . $model->cedula;
+$this->title = 'Actualizar';
 $this->params['breadcrumbs'][] = ['label' => 'Representantes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->cedula, 'url' => ['view', 'id' => $model->cedula]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="representante-update">
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TerapiaEspecialistaSerch */
@@ -16,19 +17,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Terapia Especialista', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Asignar Especialidad', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'tpa_id',
-            'eta_cedula',
-            'pte_cedula',
+            [
+            'attribute'=>'tpa_id',
+            'value'=>'tpa.descripcion',
+            'label'=>'Terapia',
+            ],
+            [
+            'attribute'=>'eta_cedula',
+            'value'=>'etaCedula.cedula',
+            'label'=>'Cedula Especialista',
+            ],
+            [
+            'attribute'=>'eta_cedula',
+            'value'=>'pteCedula.cedula',
+            'label'=>'Cedula Paciente BUSQUEDAAAAAAAAAAAAAAA',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
+
 </div>

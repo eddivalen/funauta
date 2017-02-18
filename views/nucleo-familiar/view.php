@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\NucleoFamiliar */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Nucleo Familiars', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Nucleo Familiar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nucleo-familiar-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,18 +28,48 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'madre',
-            'padre',
-            'compmadre',
-            'comppadre',
-            'hermanos',
-            'hermanas',
-            'tias',
-            'tios',
-            'abuelo',
-            'otros',
-            'descripcion',
+            [
+                'attribute'=>'id',
+                'label'=>'ID de Nucleo Familiar',
+            ], 
+            [ 
+                'attribute'=>'madre',
+                'label'=>'Cantidad de Madres',
+            ], 
+            [
+                'attribute'=>'padre',
+                'label'=>'Cantidad de Padres',
+            ], 
+            [
+                'attribute'=>'compmadre',
+                'value'=>$model->compmadre,
+                'label'=>'Compañero de Madre',
+            ],
+            [
+                'attribute'=>'comppadre',
+                'value'=>$model->comppadre,
+                'label'=>'Compañero de Padre',
+            ], 
+            [
+                'attribute'=>'tias',
+                'label'=>'Cantidad de Tias',
+            ], 
+            [
+                'attribute'=>'tios',
+                'label'=>'Cantidad de Tios',
+            ], 
+            [
+                'attribute'=>'abuelo',
+                'label'=>'Cantidad de Abuelos',
+            ], 
+            [
+                'attribute'=>'otros',
+                'label'=>'Otros Parientes',
+            ], 
+            [
+                'attribute'=>'descripcion',
+                'label'=>'Descripcion',
+            ], 
         ],
     ]) ?>
 

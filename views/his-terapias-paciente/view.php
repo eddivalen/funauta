@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\HisTerapiasPaciente */
 
-$this->title = $model->pte_cedula;
-$this->params['breadcrumbs'][] = ['label' => 'His Terapias Pacientes', 'url' => ['index']];
+$this->title = $model->pteCedula->nombre;
+$this->params['breadcrumbs'][] = ['label' => 'Historial Terapias Pacientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="his-terapias-paciente-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'pte_cedula' => $model->pte_cedula, 'hpa_id' => $model->hpa_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'pte_cedula' => $model->pte_cedula, 'hpa_id' => $model->hpa_id], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,9 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'pte_cedula',
-            'hpa_id',
+            [
+                'attribute'=>'id',
+                'label'=>'ID de Historia',
+            ], 
+            [
+                'attribute'=>'pte_cedula',
+                'label'=>'Cedula del Paciente',
+            ],
             'tiempo',
+            'descripcion',
         ],
     ]) ?>
 

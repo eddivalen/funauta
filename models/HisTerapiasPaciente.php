@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "his_terapias_paciente".
  *
+ * @property integer $id
  * @property integer $pte_cedula
- * @property integer $hpa_id
  * @property string $tiempo
+ * @property string $descripcion
  *
- * @property HistorialTerapias $hpa
  * @property Paciente $pteCedula
  */
 class HisTerapiasPaciente extends \yii\db\ActiveRecord
@@ -30,10 +30,10 @@ class HisTerapiasPaciente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pte_cedula', 'hpa_id', 'tiempo'], 'required'],
-            [['pte_cedula', 'hpa_id'], 'integer'],
+            [['pte_cedula', 'tiempo'], 'required'],
+            [['pte_cedula'], 'integer'],
             [['tiempo'], 'string', 'max' => 45],
-            [['hpa_id'], 'exist', 'skipOnError' => true, 'targetClass' => HistorialTerapias::className(), 'targetAttribute' => ['hpa_id' => 'id']],
+            [['descripcion'], 'string', 'max' => 200],
             [['pte_cedula'], 'exist', 'skipOnError' => true, 'targetClass' => Paciente::className(), 'targetAttribute' => ['pte_cedula' => 'cedula']],
         ];
     }
@@ -44,18 +44,11 @@ class HisTerapiasPaciente extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'pte_cedula' => 'Pte Cedula',
-            'hpa_id' => 'Hpa ID',
             'tiempo' => 'Tiempo',
+            'descripcion' => 'Descripcion',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getHpa()
-    {
-        return $this->hasOne(HistorialTerapias::className(), ['id' => 'hpa_id']);
     }
 
     /**

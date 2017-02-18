@@ -57,6 +57,7 @@ class PacienteSerch extends Paciente
             return $dataProvider;
         }
 
+        $query->joinWith('nca');
         // grid filtering conditions
         $query->andFilterWhere([
             'cedula' => $this->cedula,
@@ -70,7 +71,8 @@ class PacienteSerch extends Paciente
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'lugar_nacimiento', $this->lugar_nacimiento])
-            ->andFilterWhere(['like', 'sexo', $this->sexo]);
+            ->andFilterWhere(['like', 'sexo', $this->sexo])
+            ->andFilterWhere(['like', 'nca.id', $this->nca_id]);
 
         return $dataProvider;
     }

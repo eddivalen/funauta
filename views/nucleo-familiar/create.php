@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\NucleoFamiliar */
 
-$this->title = 'Create Nucleo Familiar';
-$this->params['breadcrumbs'][] = ['label' => 'Nucleo Familiars', 'url' => ['index']];
+$this->title = 'Crear';
+$this->params['breadcrumbs'][] = ['label' => 'Nucleo Familiar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nucleo-familiar-create">

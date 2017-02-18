@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TipoEspecialistaSerch */
@@ -16,18 +17,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tipo Especialista', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Asginar Especialidad', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'eta_cedula',
-            'tpo_id',
+            [
+            'attribute'=>'eta_cedula',
+            'label'=>'Cedula Especialista',
+            ],
+            [
+            'attribute'=>'tpo_id',
+            'value'=>'tpo.descripcion',
+            'label'=>'Tipo de Especialista',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
+
 </div>

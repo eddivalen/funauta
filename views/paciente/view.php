@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->cedula], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->cedula], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->cedula], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->cedula], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,13 +31,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'cedula',
             'nombre',
             'apellido',
-            'fecha_nacimiento',
-            'lugar_nacimiento',
+            [
+                'attribute'=>'fecha_nacimiento',
+                'label'=>'Fecha de Nacimiento',
+            ], 
+            [
+                'attribute'=>'lugar_nacimiento',
+                'label'=>'Lugar de Nacimiento',
+            ],
             'edad',
             'sexo',
-            'rte_cedula',
-            'ico_id',
-            'nca_id',
+            [
+                'attribute'=>'rte_cedula',
+                'label'=>'Cedula de Representante',
+            ],
+            [
+                'attribute'=>'ico_id',
+                'value'=>$model->ico->nombre,
+                'label'=>'Nombre de la Institucion',
+            ],
+            [
+                'attribute'=>'nca_id',
+                'label'=>'ID de Nucleo Familiar',
+            ],
         ],
     ]) ?>
 

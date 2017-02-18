@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TerapiaEspecialista */
 
-$this->title = 'Create Terapia Especialista';
+$this->title = 'Asignar Especialidad';
 $this->params['breadcrumbs'][] = ['label' => 'Terapia Especialistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

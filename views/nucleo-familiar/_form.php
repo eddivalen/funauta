@@ -12,15 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
-
     <?= $form->field($model, 'madre')->textInput() ?>
 
     <?= $form->field($model, 'padre')->textInput() ?>
 
-    <?= $form->field($model, 'compmadre')->textInput() ?>
+    <?= $form->field($model, 'compmadre')->textInput()->label('Compañero de Madre') ?>
 
-    <?= $form->field($model, 'comppadre')->textInput() ?>
+    <?= $form->field($model, 'comppadre')->textInput()->label('Compañera de Padre') ?>
 
     <?= $form->field($model, 'hermanos')->textInput() ?>
 
@@ -37,7 +35,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

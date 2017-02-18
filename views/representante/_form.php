@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use app\models\NivelSocioeconomico;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Representante */
@@ -42,15 +40,12 @@ use app\models\NivelSocioeconomico;
 
     <?= $form->field($model, 'actividad')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'disponibilidad')->dropDownList([ 'SI' => 'SI', 'NO' => 'NO', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'disponibilidad')->dropDownList([ 'Si' => 'Si', 'No' => 'No', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'nvo_id')->dropDownList(
-        ArrayHelper::map(NivelSocioeconomico::find()->all(),'id','vivienda', 'ingresos'),
-        ['prompt'=>'Elegir Actividad']
-    )?>
+    <?= $form->field($model, 'nivel_socioeconomico')->dropDownList([ 'BAJA' => 'BAJA', 'MEDIA' => 'MEDIA', 'ALTA' => 'ALTA', ], ['prompt' => '']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

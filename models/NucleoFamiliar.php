@@ -38,8 +38,7 @@ class NucleoFamiliar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['id', 'madre', 'padre', 'compmadre', 'comppadre', 'hermanos', 'hermanas', 'tias', 'tios', 'abuelo', 'otros'], 'integer'],
+            [['madre', 'padre', 'compmadre', 'comppadre', 'hermanos', 'hermanas', 'tias', 'tios', 'abuelo', 'otros'], 'integer'],
             [['descripcion'], 'string', 'max' => 254],
         ];
     }

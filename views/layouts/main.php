@@ -48,27 +48,33 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'Acerca', 'url' => ['/site/about']],
-            ['label' => 'Contacto', 'url' => ['/site/contact']],
+            ['label' => 'Inicio', 'url' => ['/site/index'],'visible'=>Yii::$app->user->isGuest],
+            ['label' => 'Acerca', 'url' => ['/site/about'],'visible'=>Yii::$app->user->isGuest],
+            ['label' => 'Contacto', 'url' => ['/site/contact'],'visible'=>Yii::$app->user->isGuest],
             ['label' => 'Registrarse', 'url' => ['/site/register'],'visible'=>Yii::$app->user->isGuest],
+            ['label' => 'Inscripcion', 'url' => ['/inscripcion'],'visible'=>$simple],
             ['label' => 'Actividades', 'url' => ['/actividades'],'visible'=>$admin],
-            ['label' => 'Act_Rep', 'url' => ['/act-rep'],'visible'=>$admin],
+            ['label' => 'Representante', 'url' => ['/representante'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Actividades del Representante', 'url' => ['/act-rep'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Evaluacion Paciente', 'url' => ['/paciente-evaluacion'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Terapia Especialista', 'url' => ['/terapia-especialista'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Historial Terapias Paciente', 'url' => ['/his-terapias-paciente'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Historia', 'url' => ['/historia'],'visible'=>!Yii::$app->user->isGuest],
+            ['label' => 'Tratamiento', 'url' => ['/tratamiento'],'visible'=>!Yii::$app->user->isGuest],
             ['label' => 'Especialista', 'url' => ['/especialista'],'visible'=>$admin],
             ['label' => 'Historia', 'url' => ['/historia'],'visible'=>$admin],
             ['label' => 'Historial Terapias Paciente', 'url' => ['/his-terapias-paciente'],'visible'=>$admin],
             ['label' => 'Institucion', 'url' => ['/institucion'],'visible'=>$admin],
             ['label' => 'Medicamento', 'url' => ['/medicamento'],'visible'=>$admin],
-            ['label' => 'Nivel Socio Economico', 'url' => ['/nivel-socioeconomico'],'visible'=>$admin],
             ['label' => 'Nucleo Familiar', 'url' => ['/nucleo-familiar'],'visible'=>$admin],
             ['label' => 'Paciente', 'url' => ['/paciente'],'visible'=>$admin],
-            ['label' => 'Paciente Evaluacion', 'url' => ['/paciente-evaluacion'],'visible'=>$admin],
-            ['label' => 'Representante', 'url' => ['/representante'],'visible'=>$admin],
             ['label' => 'Terapia', 'url' => ['/terapia'],'visible'=>$admin],
-            ['label' => 'Terapia Especialista', 'url' => ['/terapia-especialista'],'visible'=>$admin],
+            
             ['label' => 'Tipo', 'url' => ['/tipo'],'visible'=>$admin],
             ['label' => 'Tipo Especialista', 'url' => ['/tipo-especialista'],'visible'=>$admin],
-            ['label' => 'Tratamiento', 'url' => ['/tratamiento'],'visible'=>$admin],
+            
+           
+            
 
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']]

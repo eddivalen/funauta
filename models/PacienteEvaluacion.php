@@ -8,11 +8,10 @@ use Yii;
  * This is the model class for table "paciente_evaluacion".
  *
  * @property string $fecha
- * @property string $motivo
  * @property integer $pte_cedula
- * @property integer $ecn_id
+ * @property string $motivo
+ * @property string $descripcion
  *
- * @property Evaluacion $ecn
  * @property Paciente $pteCedula
  */
 class PacienteEvaluacion extends \yii\db\ActiveRecord
@@ -31,11 +30,11 @@ class PacienteEvaluacion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fecha', 'motivo', 'pte_cedula', 'ecn_id'], 'required'],
+            [['fecha', 'pte_cedula', 'motivo'], 'required'],
             [['fecha'], 'safe'],
-            [['pte_cedula', 'ecn_id'], 'integer'],
+            [['pte_cedula'], 'integer'],
             [['motivo'], 'string', 'max' => 256],
-            [['ecn_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evaluacion::className(), 'targetAttribute' => ['ecn_id' => 'id']],
+            [['descripcion'], 'string', 'max' => 250],
             [['pte_cedula'], 'exist', 'skipOnError' => true, 'targetClass' => Paciente::className(), 'targetAttribute' => ['pte_cedula' => 'cedula']],
         ];
     }
@@ -47,18 +46,10 @@ class PacienteEvaluacion extends \yii\db\ActiveRecord
     {
         return [
             'fecha' => 'Fecha',
-            'motivo' => 'Motivo',
             'pte_cedula' => 'Pte Cedula',
-            'ecn_id' => 'Ecn ID',
+            'motivo' => 'Motivo',
+            'descripcion' => 'Descripcion',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getEcn()
-    {
-        return $this->hasOne(Evaluacion::className(), ['id' => 'ecn_id']);
     }
 
     /**

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Actualizar';
 $this->params['breadcrumbs'][] = ['label' => 'Actividad por Representes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->rteCedula->nombre, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="act-rep-update">

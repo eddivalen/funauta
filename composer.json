@@ -17,7 +17,11 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yidas/yii2-composer-bower-skip": "^2.0",
+        "components/font-awesome": "^4.7",
+        "p2made/yii2-p2y2-things": "^1.15",
+        "p2made/yii2-sb-admin-theme": "^1.5"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -27,7 +31,8 @@
         "2amigos/yii2-date-picker-widget": "*",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
-        "codeception/specify": "~0.4.3"
+        "codeception/specify": "~0.4.3",
+        "bower-asset/bootstrap-social": "^5.1.1"
     },
     "config": {
         "process-timeout": 1800

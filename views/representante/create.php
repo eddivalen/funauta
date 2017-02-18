@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Representante */
 
-$this->title = 'Create Representante';
+$this->title = 'Inscribir';
 $this->params['breadcrumbs'][] = ['label' => 'Representantes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\NucleoFamiliarSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Nucleo Familiars';
+$this->title = 'Nucleo Familiar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nucleo-familiar-index">
@@ -16,8 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Nucleo Familiar', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -26,17 +28,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'madre',
             'padre',
-            'compmadre',
-            'comppadre',
-            'hermanos',
-            'hermanas',
-            'tias',
-            'tios',
-            'abuelo',
-            'otros',
-            'descripcion',
-
+            [
+                'attribute'=>'compmadre',
+                'label'=>'Compañero de Madre',
+            ],
+            [
+                'attribute'=>'comppadre',
+                'label'=>'Compañero de Padre',
+            ],    
+            // 'hermanos',
+            // 'hermanas',
+            // 'tias',
+            // 'tios',
+            // 'abuelo',
+            // 'otros',
+            // 'descripcion',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
+
 </div>

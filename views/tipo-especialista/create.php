@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TipoEspecialista */
 
-$this->title = 'Create Tipo Especialista';
+$this->title = 'Asignar';
 $this->params['breadcrumbs'][] = ['label' => 'Tipo Especialistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
