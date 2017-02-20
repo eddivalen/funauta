@@ -3,7 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use p2made\helpers\FA;
 
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RepresentanteSerch */
 /* @var $dataProvider yii\data\Activ eDataProvider */
@@ -12,8 +14,6 @@ $this->title = 'Representantes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="representante-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>

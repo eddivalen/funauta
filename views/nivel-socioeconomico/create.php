@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-
+use p2made\helpers\FA;
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\NivelSocioeconomico */
@@ -12,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nivel-socioeconomico-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

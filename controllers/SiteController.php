@@ -302,6 +302,9 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+            'page' => [
+                'class' => 'yii\web\ViewAction',
+            ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -333,11 +336,11 @@ class SiteController extends Controller
    
            if (User::isUserAdmin(Yii::$app->user->identity->id))
            {
-            return $this->redirect(["site/admin"]);
+            return $this->redirect(["site/index"]);
            }
            else
            {
-            return $this->redirect(["site/user"]);
+            return $this->redirect(["site/index"]);
            }
         }
  
@@ -345,10 +348,10 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if (User::isUserAdmin(Yii::$app->user->identity->id))
             {
-            return $this->redirect(["site/admin"]);
+            return $this->redirect(["site/index"]);
             }
          else{
-                return $this->redirect(["site/user"]);
+                return $this->redirect(["site/index"]);
             }
          } else {
             return $this->render('login', [
@@ -366,7 +369,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(["site/login"]);
     }
 
     /**

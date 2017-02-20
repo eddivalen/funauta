@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use p2made\helpers\FA;
 
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\Institucion */
 
@@ -12,14 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="institucion-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Actualizar', ['Actualizar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Eliminar', ['Eliminar', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Está seguro de eliminar este elemento?',
+                'confirm' => 'seguro que desea eliminar este dato?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,10 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            [
-                'attribute'=>'id',
-                'label'=>'ID de Institucion',
-            ], 
+            'id',
             'nombre',
             'direccion',
         ],

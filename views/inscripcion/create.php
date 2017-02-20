@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use p2made\helpers\FA;
 
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Paciente */
@@ -12,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
 		'paciente'    => $paciente,

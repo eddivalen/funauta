@@ -3,7 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-
+use p2made\helpers\FA;
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TerapiaEspecialistaSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="terapia-especialista-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
             'attribute'=>'eta_cedula',
             'value'=>'pteCedula.cedula',
-            'label'=>'Cedula Paciente BUSQUEDAAAAAAAAAAAAAAA',
+            'label'=>'Cedula Paciente',
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

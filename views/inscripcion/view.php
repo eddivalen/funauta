@@ -6,7 +6,9 @@ use yii\widgets\ListView;
 use yii\data\ActiveDataProvider;
 use app\models\HisTerapiasPaciente;
 use yii\grid\GridView;
+use p2made\helpers\FA;
 
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\Paciente */
 
@@ -16,7 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $paciente->cedula], ['class' => 'btn btn-primary']) ?>
@@ -95,22 +96,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
 
     ]) ?>
+    <h3>Terapias que ha recibido el paciente</h3>
       <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            [
-                'attribute'=>'pte_cedula',
-                'label'=>'Cedula del Paciente',
-            ],
             'tiempo',
             'descripcion',
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php /*
       <?= DetailView::widget([
         'model' => $hisTerapias,
 
@@ -125,6 +120,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ], 
         ],
     ]) ?>
-
+ */?>
 
 </div>

@@ -46,6 +46,32 @@ $config = [
                 ],
             ],
         ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/p2made/yii2-sb-admin-theme/views/sb-admin-2',
+                ],
+            ],
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null, 'js' => [],
+                ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null, 'css' => [],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'sourcePath' => null, 'js' => [],
+                ],
+                'yii\jui\JuiAsset' => [
+                    'sourcePath' => null, 'css' => [], 'js' => [],
+                ],
+                '\rmrevin\yii\fontawesome\AssetBundle' => [
+                    'sourcePath' => null, 'css' => [],
+                ],
+            ],
+        ],
         'db' => require(__DIR__ . '/db.php'),
         /*
         'urlManager' => [
