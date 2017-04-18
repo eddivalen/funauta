@@ -6,10 +6,10 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\Tratamiento */
 
-$this->title = 'Update Tratamiento: ' . $model->id;
+$this->title = 'Actualizar Tratamiento: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Tratamientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tratamiento-update">
 

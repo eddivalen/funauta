@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use dosamigos\datepicker\DatePicker;
+use app\models\Paciente;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PacienteEvaluacion */
@@ -21,7 +23,10 @@ use dosamigos\datepicker\DatePicker;
             'format' => 'yyyy-mm-dd'
         ]
     ])->label('Fecha de Evaluacion')?>
-    <?= $form->field($model, 'pte_cedula')->textInput()->label('Cedula del Paciente') ?>
+    <?= $form->field($model, 'pte_cedula')->dropDownList(
+        ArrayHelper::map(Paciente::find()->all(), 'cedula', 'cedula'),
+        ['prompt'=>'Elegir Paciente']
+    )->label('Cedula del Paciente')?>
 
     <?= $form->field($model, 'motivo')->textInput(['maxlength' => true]) ?>
 

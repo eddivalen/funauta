@@ -62,6 +62,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
                                 'allowClear' => true
                             ],
                         ])->label('Cedula Representante')?>
+                        <?= Html::a('Crear representante', ['/representante/create'], ['class'=>'btn btn-primary']) ?>
 
                         <?= $form->field($paciente, 'ico_id')->dropDownList(
                             ArrayHelper::map(Institucion::find()->all(), 'id', 'nombre'),
