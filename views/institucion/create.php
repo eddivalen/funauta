@@ -1,12 +1,7 @@
 <?php
-
 use yii\helpers\Html;
 use p2made\helpers\FA;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Institucion */
-
 
 	$this->title = 'Agregar Institucion';
 	$this->params['breadcrumbs'][] = ['label' => 'Instituciones', 'url' => ['index']];
@@ -16,7 +11,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 		<div class="institucion-create">
 
 		    <?= $this->render('_form', [
-		        'model' => $model, k]) ?>
+		        'model' => $model]) ?>
 
 		</div>
 	</div>

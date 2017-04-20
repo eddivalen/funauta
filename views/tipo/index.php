@@ -9,7 +9,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $searchModel app\models\TipoSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tipos';
+$this->title = 'Tipos de especialidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipo-index">

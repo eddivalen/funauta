@@ -7,7 +7,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\Medicamento */
 
-$this->title = 'Agregar';
+$this->title = 'Agregar medicamento';
 $this->params['breadcrumbs'][] = ['label' => 'Medicamentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

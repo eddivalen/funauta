@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Terapia Especialistas', 'url' => [
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="terapia-especialista-view">
-
-
     <p>
         <?= Html::a('Actualizar', ['update', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Eliminar', ['delete', 'tpa_id' => $model->tpa_id, 'eta_cedula' => $model->eta_cedula], [
@@ -43,8 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'value'=>$model->pteCedula->cedula,
             'label'=>'Cedula Paciente',
             ],
-
         ],
     ]) ?>
-
 </div>
