@@ -28,9 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'descripcion',
-            'mto_id',
-            'pte_cedula',
-
+            [
+                'attribute'=>'mto_id',
+                'label'=>'Medicamento',
+            ],
+            [
+                'attribute'=>'pte_cedula',
+                'label'=>'Paciente cedula',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

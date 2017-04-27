@@ -35,10 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'lugar_nacimiento',
             'edad',
             'sexo',
-            'rte_cedula',
-            'ico_id',
+             [
+                'attribute'=>'rte_cedula',
+                'label'=>'Representante cedula',
+            ],
+            [
+                'attribute'=>'ico_id',
+                'label'=>'Institución',
+            ],
             'nca_id',
-            
             ['class' => 'yii\grid\ActionColumn'],
         ],
         

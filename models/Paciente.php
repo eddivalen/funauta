@@ -67,9 +67,9 @@ class Paciente extends \yii\db\ActiveRecord
             'lugar_nacimiento' => 'Lugar Nacimiento',
             'edad' => 'Edad',
             'sexo' => 'Sexo',
-            'rte_cedula' => 'Rte Cedula',
-            'ico_id' => 'Ico ID',
-            'nca_id' => 'Nca ID',
+            'rte_cedula' => 'Representante cdula',
+            'ico_id' => 'Institucion',
+            'nca_id' => 'Nucleo familiar',
         ];
     }
 
@@ -95,6 +95,10 @@ class Paciente extends \yii\db\ActiveRecord
     public function getIco()
     {
         return $this->hasOne(Institucion::className(), ['id' => 'ico_id']);
+    }
+     public function getNameIco()
+    {
+        return $this->hasOne(Institucion::className(), ['id' => 'nombre']);
     }
 
     /**

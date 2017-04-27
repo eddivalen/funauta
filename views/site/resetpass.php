@@ -1,6 +1,8 @@
 <?php
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 ?>
  
 <h3><?= $msg ?></h3>
