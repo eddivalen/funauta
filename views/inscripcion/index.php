@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use p2made\helpers\FA;
-
+$this->registerCssFile("../web/css/style.css");
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteSerch */
@@ -13,12 +13,18 @@ $this->title = 'Alumno';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-index">
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Inscripcion', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="row">
+       <div class="col-md-1">
+            <p>
+                <?= Html::a('Inscripcion', ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
+        </div>
+       <div class="col-md-1 bt">
+            <p>
+                <?= Html::a('PDF', ['export'], ['class' => 'btn btn-danger']) ?>
+            </p>
+        </div>
+    </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -42,6 +48,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'ico_id',
                 'label'=>'Institución',
+            ],
+            [
+                'attribute'=>'institucion',
+                'label'=>'Institución',
+                'value'=>'ico.nombre'
             ],
             'nca_id',
             ['class' => 'yii\grid\ActionColumn'],

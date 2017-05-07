@@ -17,17 +17,16 @@ $this->params['breadcrumbs'][] = ['label' => 'Pacientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-view">
-
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $paciente->cedula], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $paciente->cedula], [
+        <?= Html::a('Actualizar', ['update', 'id' => $paciente->cedula], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $paciente->cedula], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('PDF', ['exportview','id' => $paciente->cedula], ['class' => 'btn btn-danger']) ?>
     </p>
 
     <?= DetailView::widget([

@@ -96,11 +96,10 @@ class Paciente extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Institucion::className(), ['id' => 'ico_id']);
     }
-     public function getNameIco()
+    public function getInstitucion()
     {
-        return $this->hasOne(Institucion::className(), ['id' => 'nombre']);
+        return $this->hasOne(Institucion::className(), ['id' => 'ico_id']);
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */

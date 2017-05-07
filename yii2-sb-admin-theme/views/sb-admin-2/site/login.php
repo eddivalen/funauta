@@ -13,7 +13,8 @@ use yii\bootstrap\Html;
 use yii\bootstrap\ActiveForm;
 use p2made\helpers\FA;
 use p2made\helpers\BSocial;
-
+use yii\helpers\Url;
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
@@ -53,7 +54,7 @@ $fieldOptions2 = [
 				<?= $form
 					->field($model, 'password', $fieldOptions2)
 					->label(false)
-					->passwordInput(['placeholder' => $model->getAttributeLabel('contraseña')])
+					->passwordInput(['placeholder' => $model->getAttributeLabel('password')])
 				?>
 
 				<div class="row">
@@ -67,22 +68,12 @@ $fieldOptions2 = [
 						]) ?>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<p class=""><a href="/basic/web/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
+					</div>
+				</div>
 
 			<?php ActiveForm::end(); ?>
-<!--
-			<div class="social-auth-links text-center">
-				<p>- OR -</p>
-				<a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-					<i class="fa fa-facebook"></i> Login using Facebook
-				</a>
-				<a href="#" class="btn btn-block btn-social btn-google-plus btn-flat">
-					<i class="fa fa-google-plus"></i> Login using Google+
-				</a>
-			</div>
-
-		</div>
-	</div>
--->
-	<!-- this goes on every site file in p2made demos -->
 	<br>
 </div>

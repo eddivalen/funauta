@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use Yii;
+use mPDF;
+use kartik\mpdf\Pdf;
 use app\models\Paciente;
 use app\models\Inscripcion;
 use app\models\PacienteSerch;
@@ -48,14 +50,17 @@ class InscripcionController extends \yii\web\Controller
     {
         $searchModel   = new PacienteSerch();
         $dataProvider  = $searchModel->search(Yii::$app->request->queryParams);
-        $searchModel2  = new NucleoFamiliarSerch();
-        $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
 
+        $session = Yii::$app->session;
+        // check if a session is already open
+        if (!$session->isActive){
+            $session->open();// open a session
+        } 
+        // save query here
+    $session['repquery'] = Yii::$app->request->queryParams;
         return $this->render('index', [
             'searchModel'   => $searchModel,
             'dataProvider'  => $dataProvider,
-            'searchModel2'  =>$searchModel2,
-            'dataProvider2' =>$dataProvider2,
         ]);
     }
 
@@ -134,6 +139,65 @@ class InscripcionController extends \yii\web\Controller
             'nucleo_fam'  => $nucleo_fam,
             'hisTerapias' => $hisTerapias,
         ]);
+    }
+    public function actionReport() {
+        $searchModel = new PacienteSerch();
+        // restore query using session
+        $dataProvider = $searchModel->search(Yii::$app->session->get('repquery'));
+        // get your HTML raw content without any layouts or scripts
+        $content = $this->render('report', [
+        'searchModel' => $searchModel,
+        'dataProvider' => $dataProvider,
+        ]);
+         
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_CORE,
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content, 
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+             // call mPDF methods on the fly
+            'methods' => [
+                'SetHeader'=>['Reporte'],
+                'SetFooter'=>['{PAGENO}'],
+            ]
+        ]);
+ 
+        // http response
+        $response = Yii::$app->response;
+        $response->format = \yii\web\Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'application/pdf');
+ 
+        // return the pdf output as per the destination setting
+        return $pdf->render();
+    }
+    public function actionExport(){
+      $this->layout='report';
+      $model = Paciente::find()->All();
+      $mpdf=new mPDF();
+      $mpdf->WriteHTML($this->renderPartial('template',['model'=>$model]));
+      //$mpdf->Output();
+      $mpdf->Output('MyPDF.pdf', 'I');
+      exit;
+    }
+    public function actionExportview($id){
+      $this->layout='report';
+      $model =  Paciente::find()->where(['cedula' => $id])->all();//Paciente::find()->All();
+      $mpdf=new mPDF();
+      $mpdf->WriteHTML($this->renderPartial('template_view',['model'=>$model]));
+      //$mpdf->Output();
+      $mpdf->Output('MyPDF.pdf', 'I');
+      exit;
     }
     protected function findModelPaciente($id)
     {

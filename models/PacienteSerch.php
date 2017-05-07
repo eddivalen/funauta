@@ -15,11 +15,14 @@ class PacienteSerch extends Paciente
     /**
      * @inheritdoc
      */
+    public $instuticion;
+    public $ico;
     public function rules()
     {
         return [
             [['cedula', 'edad', 'rte_cedula', 'ico_id', 'nca_id'], 'integer'],
             [['nombre', 'apellido', 'fecha_nacimiento', 'lugar_nacimiento', 'sexo'], 'safe'],
+            [['ico'],'safe'],
         ];
     }
 
@@ -44,6 +47,7 @@ class PacienteSerch extends Paciente
         $query = Paciente::find();
 
         // add conditions that should always apply here
+        $query->joinWith(['ico']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -51,6 +55,11 @@ class PacienteSerch extends Paciente
 
         $this->load($params);
 
+        $dataProvider->sort->attributes['ico'] = [
+        // The tables are the ones our relation are configured to
+        // in my case they are prefixed with "tbl_"
+        'asc' => ['institucion.nombre' => SORT_ASC],
+        ];
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -65,6 +74,7 @@ class PacienteSerch extends Paciente
             'edad' => $this->edad,
             'rte_cedula' => $this->rte_cedula,
             'ico_id' => $this->ico_id,
+            'ico.nombre' => $this->ico,
             'nca_id' => $this->nca_id,
         ]);
 
@@ -72,7 +82,8 @@ class PacienteSerch extends Paciente
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'lugar_nacimiento', $this->lugar_nacimiento])
             ->andFilterWhere(['like', 'sexo', $this->sexo])
-            ->andFilterWhere(['like', 'nca.id', $this->nca_id]);
+            ->andFilterWhere(['like', 'nca.id', $this->nca_id])
+            ->andFilterWhere(['like','institucion.nombre',$this->ico]);
 
         return $dataProvider;
     }

@@ -22,7 +22,8 @@
         "components/font-awesome": "^4.7",
         "p2made/yii2-p2y2-things": "^1.15",
         "p2made/yii2-sb-admin-theme": "^1.5",
-        "kartik-v/yii2-widget-select2": "@dev"
+        "kartik-v/yii2-widget-select2": "@dev",
+        "kartik-v/yii2-mpdf": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

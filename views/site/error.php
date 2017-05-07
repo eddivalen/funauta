@@ -6,7 +6,7 @@
 /* @var $exception Exception */
 
 use yii\helpers\Html;
-
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 $this->title = $name;
 ?>
 <div class="site-error">
