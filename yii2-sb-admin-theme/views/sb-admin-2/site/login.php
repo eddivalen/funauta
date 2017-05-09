@@ -33,18 +33,17 @@ $fieldOptions2 = [
 ?>
 <div class="sb-box">
 	<div class="sb-logo">
-		<?= Html::a('FUNAUTA', Yii::$app->homeUrl) ?>
+		<?= Html::a('<h1>FUNAUTA</h1>', Yii::$app->homeUrl) ?>
 	</div>
-	<div class="sb-box-body panel panel-default">
+	<div class="login-panel panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Inicia sesión</h3>
+		</div>
 		<div class="panel-body">
-
-			<p class="sb-box-msg">Iniciar sesión</p>
-
 			<?php $form = ActiveForm::begin([
 				'id' => 'login-form',
 				'enableClientValidation' => false
 			]); ?>
-
 				<?= $form
 					->field($model, 'username', $fieldOptions1)
 					->label(false)
@@ -54,16 +53,17 @@ $fieldOptions2 = [
 				<?= $form
 					->field($model, 'password', $fieldOptions2)
 					->label(false)
-					->passwordInput(['placeholder' => $model->getAttributeLabel('password')])
+					->passwordInput(['placeholder' =>'Contraseña'])
 				?>
 
 				<div class="row">
 					<div class="col-xs-8">
-						<?= $form->field($model, 'rememberMe')->checkbox() ?>
+						<?= $form->field($model, 'rememberMe')->checkbox()
+							->label('Recordar sesión')?>
 					</div>
 					<div class="col-xs-4">
-						<?= Html::submitButton('Login', [
-							'class' => 'btn btn-primary btn-block btn-flat',
+						<?= Html::submitButton('Iniciar sesión', [
+							'class' => 'btn btn-success btn-block btn-flat',
 							'name' => 'login-button'
 						]) ?>
 					</div>
@@ -73,7 +73,7 @@ $fieldOptions2 = [
 						<p class=""><a href="/basic/web/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
 					</div>
 				</div>
-
 			<?php ActiveForm::end(); ?>
-	<br>
+	</div>
+	</div>
 </div>

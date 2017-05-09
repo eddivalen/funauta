@@ -16,10 +16,16 @@ use yii\helpers\Url;
 use app\models\Users;
 use app\models\User;
 use p2made\helpers\FA;
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this \yii\web\View */
 /* @var $content string */
 $options = ['class' => ['fa', 'fa-sign-out','fa-fw']];
-
+$admin = false;
+    $simple = false;
+    if(!Yii::$app->user->isGuest){
+        $admin = (Yii::$app->user->identity->role == 2) ? true : false ;
+        $simple = (Yii::$app->user->identity->role == 1) ? true : false ;
+    }
 
 ?>
 <div class="navbar-header">
@@ -30,10 +36,16 @@ $options = ['class' => ['fa', 'fa-sign-out','fa-fw']];
 		<span class="icon-bar"></span>
 	</button>
 	<?= Html::a('<b>FUNAUTA</b>', Yii::$app->homeUrl, ['class' => 'navbar-brand']) ?>
-	<!-- <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'navbar-brand']) ?> -->
+
+	
+	
 </div>
 
 <ul class="nav navbar-top-links navbar-right">
+	<?php if($simple){ ?> 
+		<a class="navbar-brand" href="">Usuario</a> <?php } ?>
+	<?php if($admin){ ?> 
+		<a class="navbar-brand" href="">Administrador</a> <?php } ?>
 	<li class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 			<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
