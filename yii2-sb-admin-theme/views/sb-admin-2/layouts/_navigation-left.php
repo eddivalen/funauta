@@ -64,16 +64,16 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				Url::to(['/act-rep', 'view' => 'act-rep'])) 
 				?><?php } ?>
 			</li>
+			<li><?php if($admin){ ?> <!-- Paciente -->
+				<?= Html::a(
+				FA::fw('user') . 'Paciente',
+				Url::to(['/paciente', 'view' => 'paciente'])) 
+				?><?php } ?>
+			</li>
 			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Evaluación Paciente -->
 				<?= Html::a(
 				FA::fw('stethoscope') . 'Evaluación Paciente',
 				Url::to(['/paciente-evaluacion', 'view' => 'paciente-evaluacion'])) 
-				?><?php } ?>
-			</li>
-			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Terapia Especialista -->
-				<?= Html::a(
-				FA::fw('plus-square') . 'Terapia Especialista',
-				Url::to(['/terapia-especialista', 'view' => 'terapia-especialista'])) 
 				?><?php } ?>
 			</li>
 			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Historial Terapias Paciente -->
@@ -94,12 +94,7 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				Url::to(['/tratamiento', 'view' => 'tratamiento'])) 
 				?><?php } ?>
 			</li>
-			<li><?php if($admin){ ?> <!-- Especialista -->
-				<?= Html::a(
-				FA::fw('user-md') . 'Especialista',
-				Url::to(['/especialista', 'view' => 'especialista'])) 
-				?><?php } ?>
-			</li>
+
 			<li><?php if($admin){ ?> <!-- Institución -->
 				<?= Html::a(
 				FA::fw('institution') . 'Institución',
@@ -112,16 +107,22 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				Url::to(['/medicamento', 'view' => 'medicamento'])) 
 				?><?php } ?>
 			</li>
-			<li><?php if($admin){ ?> <!-- Paciente -->
-				<?= Html::a(
-				FA::fw('user') . 'Paciente',
-				Url::to(['/paciente', 'view' => 'paciente'])) 
-				?><?php } ?>
-			</li>
 			<li><?php if($admin){ ?> <!-- Terapia -->
 				<?= Html::a(
 				FA::fw('medkit') . 'Terapia',
 				Url::to(['/terapia', 'view' => 'terapia'])) 
+				?><?php } ?>
+			</li>
+			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Terapia Especialista -->
+				<?= Html::a(
+				FA::fw('plus-square') . 'Terapia Especialista',
+				Url::to(['/terapia-especialista', 'view' => 'terapia-especialista'])) 
+				?><?php } ?>
+			</li>
+			<li><?php if($admin){ ?> <!-- Especialista -->
+				<?= Html::a(
+				FA::fw('user-md') . 'Especialista',
+				Url::to(['/especialista', 'view' => 'especialista'])) 
 				?><?php } ?>
 			</li>
 			<li><?php if($admin){ ?> <!-- Tipo -->
@@ -132,7 +133,7 @@ $arrowIcon = FA::i('arrow')->tag('span');
 			</li>
 			<li><?php if($admin){ ?> <!-- Tipo Especialista -->
 				<?= Html::a(
-				FA::fw('arrow-circle-up') . 'Tipo Especialista',
+				FA::fw('arrow-circle-up') . 'Asignar Especialista',
 				Url::to(['/tipo-especialista', 'view' => 'tipo-especialista'])) 
 				?><?php } ?>
 			</li>				

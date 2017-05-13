@@ -23,14 +23,13 @@
         "p2made/yii2-p2y2-things": "^1.15",
         "p2made/yii2-sb-admin-theme": "^1.5",
         "kartik-v/yii2-widget-select2": "@dev",
-        "kartik-v/yii2-mpdf": "*"
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-widget-datepicker": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "kartik-v/yii2-widget-select2": "@dev",
-        "2amigos/yii2-date-picker-widget": "*",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
         "codeception/specify": "~0.4.3",

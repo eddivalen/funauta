@@ -36,9 +36,6 @@ $admin = false;
 		<span class="icon-bar"></span>
 	</button>
 	<?= Html::a('<b>FUNAUTA</b>', Yii::$app->homeUrl, ['class' => 'navbar-brand']) ?>
-
-	
-	
 </div>
 
 <ul class="nav navbar-top-links navbar-right">

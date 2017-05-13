@@ -12,10 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="tratamiento-update">
-
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>

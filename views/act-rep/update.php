@@ -12,10 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->rteCedula->nombre, 'url' =>
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="act-rep-update">
-
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>
