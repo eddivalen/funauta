@@ -1,49 +1,83 @@
 <?php
+/**
+ * login.php
+ *
+ * @copyright Copyright &copy; Pedro Plowman, 2017
+ * @author Pedro Plowman
+ * @link https://github.com/p2made
+ * @package p2made/yii2-sb-admin-theme
+ * @license MIT
+ */
 
+use yii\bootstrap\Html;
+use yii\bootstrap\ActiveForm;
+use p2made\helpers\FA;
+use p2made\helpers\BSocial;
+use yii\helpers\Url;
+p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+/* @var $model \common\models\LoginForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback', 'autofocus' => 'autofocus'],
+    'inputTemplate' => "{input}<i class='glyphicon glyphicon-envelope form-control-feedback'></i>",
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<i class='glyphicon glyphicon-lock form-control-feedback'></i>",
+];
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) 
-        ?>
-        
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
+<div class="sb-box">
+    <div class="sb-logo">
+        <?= Html::a('<h1>FUNAUTA</h1>', Yii::$app->homeUrl) ?>
+    </div>
+    <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Inicia sesión</h3>
         </div>
-        <p class="col-lg-offset-1"><a href="/basic/web/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
+        <div class="panel-body">
+            <?php $form = ActiveForm::begin([
+                'id' => 'login-form',
+                'enableClientValidation' => false
+            ]); ?>
+                <?= $form
+                    ->field($model, 'username', $fieldOptions1)
+                    ->label(false)
+                    ->textInput(['placeholder' => $model->getAttributeLabel('usuario')])
+                ?>
 
-    <?php ActiveForm::end(); ?>
+                <?= $form
+                    ->field($model, 'password', $fieldOptions2)
+                    ->label(false)
+                    ->passwordInput(['placeholder' =>'Contraseña'])
+                ?>
 
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+                <div class="row">
+                    <div class="col-xs-8">
+                        <?= $form->field($model, 'rememberMe')->checkbox()
+                            ->label('Recordar sesión')?>
+                    </div>
+                    <div class="col-xs-4">
+                        <?= Html::submitButton('Iniciar sesión', [
+                            'class' => 'btn btn-success btn-block btn-flat',
+                            'name' => 'login-button'
+                        ]) ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class=""><a href="/funauta/web/index.php?r=site/register">Registrarse</a></p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p style="margin-left:30px;"class=""><a href="/funauta/web/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
+                    </div>  
+                </div>
+            
+            <?php ActiveForm::end(); ?>
+    </div>
     </div>
 </div>

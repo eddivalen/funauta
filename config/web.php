@@ -46,14 +46,13 @@ $config = [
                 ],
             ],
         ],
-        'view' => [
+        /*'view' => [
             'theme' => [
                 'pathMap' => [
                     '@app/views' => '@vendor/p2made/yii2-sb-admin-theme/views/sb-admin-2',
                 ],
             ],
-        ],
-      
+        ],*/
         'db' => require(__DIR__ . '/db.php'),
         /*
         'urlManager' => [
