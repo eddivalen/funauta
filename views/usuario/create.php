@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
-/* @var $model app\models\Representante */
-$this->title = 'Inscribir';
-$this->params['breadcrumbs'][] = ['label' => 'Representantes', 'url' => ['index']];
+/* @var $model app\models\Users */
+$this->title = 'Crear Usuario';
+$this->params['breadcrumbs'][] = ['label' => 'Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="body-content">
@@ -12,10 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-12">
             <div class="panel panel-default">
 	            <div class="panel-heading">
-	                   Formulario de actualización del representante
+	                   Formulario de actualización
 	            </div>
 	            <div class="panel-body">
-					<div class="representante-create">
+					<div class="users-create">
 					    <?= $this->render('_form', [
 					        'model' => $model,
 					    ]) ?>

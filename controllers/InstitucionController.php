@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\models\User;
 /**
  * InstitucionController implements the CRUD actions for Institucion model.
  */
@@ -22,12 +23,17 @@ class InstitucionController extends Controller
         return [
             'access' => [
                         'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
+                        'only' => ['index','create','update','view','admin'],
                         'rules' => [
                             // allow authenticated users
                             [
+                                'actions' => ['index','create','update','view','admin'],
                                 'allow' => true,
                                 'roles' => ['@'],
+                                'matchCallback' => function ($rule, $action) {
+                                //Llamada al método que comprueba si es un administrador
+                                return User::isUserAdmin(Yii::$app->user->identity->id);
+                                },
                             ],
                             // everything else is denied
                         ],

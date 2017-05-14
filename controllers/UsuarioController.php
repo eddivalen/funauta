@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Terapia;
-use app\models\TerapiaSerch;
+use app\models\Users;
+use app\models\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use app\models\User;
 /**
- * TerapiaController implements the CRUD actions for Terapia model.
+ * UsuarioController implements the CRUD actions for Users model.
  */
-class TerapiaController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * @inheritdoc
@@ -48,12 +47,12 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Lists all Terapia models.
+     * Lists all Users models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TerapiaSerch();
+        $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +62,7 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Displays a single Terapia model.
+     * Displays a single Users model.
      * @param integer $id
      * @return mixed
      */
@@ -75,13 +74,13 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Creates a new Terapia model.
+     * Creates a new Users model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Terapia();
+        $model = new Users();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -93,7 +92,7 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Updates an existing Terapia model.
+     * Updates an existing Users model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +111,7 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Deletes an existing Terapia model.
+     * Deletes an existing Users model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,15 +124,15 @@ class TerapiaController extends Controller
     }
 
     /**
-     * Finds the Terapia model based on its primary key value.
+     * Finds the Users model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Terapia the loaded model
+     * @return Users the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Terapia::findOne($id)) !== null) {
+        if (($model = Users::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

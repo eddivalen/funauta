@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use app\models\User;
 /**
  * TipoEspecialistaController implements the CRUD actions for TipoEspecialista model.
  */
@@ -20,14 +21,19 @@ class TipoEspecialistaController extends Controller
     public function behaviors()
     {
         return [
-             'access' => [
+            'access' => [
                         'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
+                        'only' => ['index','create','update','view','admin'],
                         'rules' => [
                             // allow authenticated users
                             [
+                                'actions' => ['index','create','update','view','admin'],
                                 'allow' => true,
                                 'roles' => ['@'],
+                                'matchCallback' => function ($rule, $action) {
+                                //Llamada al método que comprueba si es un administrador
+                                return User::isUserAdmin(Yii::$app->user->identity->id);
+                                },
                             ],
                             // everything else is denied
                         ],
