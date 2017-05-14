@@ -2,11 +2,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
+$this->title = 'Registrarse';
 ?>
 
 <h3><?= $msg ?></h3>
 
-<h1>Registrarse</h1>
 <?php $form = ActiveForm::begin([
     'method' => 'post',
  'id' => 'formulario',
@@ -30,6 +30,6 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
  <?= $form->field($model, "password_repeat")->input("password") ?>   
 </div>
 
-<?= Html::submitButton("Register", ["class" => "btn btn-primary"]) ?>
+<?= Html::submitButton("Registrarse", ["class" => "btn btn-primary"]) ?>
 
 <?php $form->end() ?>

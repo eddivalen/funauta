@@ -19,7 +19,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'Login';
+$this->title = 'Iniciar sesión';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback', 'autofocus' => 'autofocus'],

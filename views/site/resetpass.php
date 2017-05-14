@@ -2,7 +2,7 @@
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+$this->title = 'Reiniciar contraseña';
 ?>
  
 <h3><?= $msg ?></h3>
