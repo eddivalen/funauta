@@ -4,11 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\PacienteEvaluacion;
-use app\models\PacienteEvaluacionSerch;
+use app\models\PacienteEvaluacionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
 /**
  * PacienteEvaluacionController implements the CRUD actions for PacienteEvaluacion model.
  */
@@ -20,18 +20,6 @@ class PacienteEvaluacionController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                        'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
-                        'rules' => [
-                            // allow authenticated users
-                            [
-                                'allow' => true,
-                                'roles' => ['@'],
-                            ],
-                            // everything else is denied
-                        ],
-                    ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -47,7 +35,7 @@ class PacienteEvaluacionController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PacienteEvaluacionSerch();
+        $searchModel = new PacienteEvaluacionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -58,13 +46,14 @@ class PacienteEvaluacionController extends Controller
 
     /**
      * Displays a single PacienteEvaluacion model.
-     * @param string $id
+     * @param integer $id
+     * @param string $fecha
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id, $fecha)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id, $fecha),
         ]);
     }
 
@@ -78,7 +67,7 @@ class PacienteEvaluacionController extends Controller
         $model = new PacienteEvaluacion();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->fecha]);
+            return $this->redirect(['view', 'id' => $model->id, 'fecha' => $model->fecha]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -89,15 +78,16 @@ class PacienteEvaluacionController extends Controller
     /**
      * Updates an existing PacienteEvaluacion model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
+     * @param string $fecha
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $fecha)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, $fecha);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->fecha]);
+            return $this->redirect(['view', 'id' => $model->id, 'fecha' => $model->fecha]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -108,12 +98,13 @@ class PacienteEvaluacionController extends Controller
     /**
      * Deletes an existing PacienteEvaluacion model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
+     * @param string $fecha
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $fecha)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id, $fecha)->delete();
 
         return $this->redirect(['index']);
     }
@@ -121,13 +112,14 @@ class PacienteEvaluacionController extends Controller
     /**
      * Finds the PacienteEvaluacion model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
+     * @param integer $id
+     * @param string $fecha
      * @return PacienteEvaluacion the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id, $fecha)
     {
-        if (($model = PacienteEvaluacion::findOne($id)) !== null) {
+        if (($model = PacienteEvaluacion::findOne(['id' => $id, 'fecha' => $fecha])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

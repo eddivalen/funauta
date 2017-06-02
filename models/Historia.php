@@ -51,8 +51,8 @@ class Historia extends \yii\db\ActiveRecord
             'id' => 'ID',
             'fecha' => 'Fecha',
             'observaciones' => 'Observaciones',
-            'tto_id' => 'Tto ID',
-            'tta_tpa_id' => 'Tta Tpa ID',
+            'tto_id' => 'ID Tratamiento ',
+            'tta_tpa_id' => 'ID Tratamiento Terapia',
             'tta_eta_cedula' => 'Tta Eta Cedula',
         ];
     }

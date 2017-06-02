@@ -4,11 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Tratamiento;
-use app\models\TratamientoSerch;
+use app\models\TratamientoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
 /**
  * TratamientoController implements the CRUD actions for Tratamiento model.
  */
@@ -20,18 +20,6 @@ class TratamientoController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                        'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
-                        'rules' => [
-                            // allow authenticated users
-                            [
-                                'allow' => true,
-                                'roles' => ['@'],
-                            ],
-                            // everything else is denied
-                        ],
-                    ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -47,7 +35,7 @@ class TratamientoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TratamientoSerch();
+        $searchModel = new TratamientoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

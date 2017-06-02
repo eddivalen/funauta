@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'tta_eta_cedula',
-                'value'=>'TtaTpa.nombre',
+                'value'=>'ttaTpa.etaCedula.nombre',
                 'label'=>'Especialista',
             ],
 

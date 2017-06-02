@@ -3,7 +3,7 @@ use yii\helpers\Html;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\Paciente */
-$this->title = 'Inscribir Alumno';
+$this->title = 'Inscribir Paciente';
 $this->params['breadcrumbs'][] = ['label' => 'Pacientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -8,14 +7,11 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TratamientoSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Tratamientos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tratamiento-index">
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a('Crear Tratamiento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -25,7 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'descripcion',
+            'indicaciones',
+            'dosis',
+            'posologia',
             [
                 'attribute'=>'mto_id',
                 'label'=>'Medicamento',
@@ -38,5 +36,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
-
 </div>

@@ -24,7 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'descripcion',
+            'indicaciones',
+            'dosis',
+            'posologia',
             'mto_id',
             'pte_cedula',
         ],

@@ -9,11 +9,13 @@ use app\models\Paciente;
     <div class="col-lg-8">
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'indicaciones')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'dosis')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'posologia')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'mto_id')->dropDownList(
-        	ArrayHelper::map(Medicamento::find()->all(), 'id', 'nombre'),
-        	['prompt'=>'Elegir Medicamento']
+            ArrayHelper::map(Medicamento::find()->all(), 'id', 'nombre'),
+            ['prompt'=>'Elegir Medicamento']
         )->label('Medicamento')?>
         <?= $form->field($model, 'pte_cedula')->dropDownList(
             ArrayHelper::map(Paciente::find()->all(), 'cedula', 'nombre','cedula'),

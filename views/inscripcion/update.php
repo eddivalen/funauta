@@ -6,7 +6,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $paciente app\pacientes\Paciente */
 
-$this->title = 'Update Paciente: ' . $paciente->cedula;
+$this->title = 'Actualizar Paciente: ' . $paciente->cedula;
 $this->params['breadcrumbs'][] = ['label' => 'Pacientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $paciente->cedula, 'url' => ['view', 'id' => $paciente->cedula]];
 $this->params['breadcrumbs'][] = 'Update';

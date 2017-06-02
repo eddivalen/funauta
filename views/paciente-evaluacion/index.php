@@ -35,7 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>'pteCedula.nombre',
                 'label'=>'Nombre del Paciente',
             ],
-            'motivo',
+            [
+                'attribute'=>'eta_cedula',
+                'value'=>'etaCedula.nombre',
+                'label'=>'Nombre del Especialista',
+            ],
+            [
+                'attribute'=>'motivo',
+                'label'=>'Diagnóstico',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

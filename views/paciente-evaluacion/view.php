@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'pte_cedula',
                 'label'=>'Cedula del Paciente',
             ],
+            [
+                'attribute'=>'eta_cedula',
+                'label'=>'Cedula del Especialista',
+            ],
             'motivo',
             'descripcion',
         ],
