@@ -2,11 +2,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
-/* @var $model app\models\PacienteEvaluacionSearch */
+/* @var $model app\models\MensualidadSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="paciente-evaluacion-search">
-
+<div class="mensualidad-search">
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
@@ -14,15 +13,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'id_pago') ?>
+
     <?= $form->field($model, 'fecha') ?>
 
-    <?= $form->field($model, 'pte_cedula') ?>
+    <?= $form->field($model, 'banco') ?>
 
-    <?= $form->field($model, 'motivo') ?>
-
-    <?= $form->field($model, 'descripcion') ?>
-
-    <?= $form->field($model, 'eta_cedula') ?>
+    <?= $form->field($model, 'rte_cedula') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

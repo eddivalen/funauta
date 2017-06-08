@@ -53,8 +53,8 @@ class Tratamiento extends \yii\db\ActiveRecord
             'indicaciones' => 'Indicaciones',
             'dosis' => 'Dosis',
             'posologia' => 'Posologia',
-            'mto_id' => 'Mto ID',
-            'pte_cedula' => 'Pte Cedula',
+            'mto_id' => 'Medicamento',
+            'pte_cedula' => 'Paciente',
         ];
     }
 

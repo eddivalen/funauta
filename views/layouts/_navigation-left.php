@@ -70,6 +70,12 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				Url::to(['/representante', 'view' => 'representante'])) 
 				?><?php } ?>
 			</li>
+			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Mensualidad -->
+				<?= Html::a(
+				FA::fw('user') . 'Mensualidad',
+				Url::to(['/mensualidad', 'view' => 'mensualidad'])) 
+				?><?php } ?>
+			</li>
 			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Actividades-Rep -->
 				<?= Html::a(
 				FA::fw('list-ul') . 'Actividades del Representante',

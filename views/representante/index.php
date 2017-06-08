@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="representante-index">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
-        <?= Html::a('Inscribir', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php Pjax::begin(); ?>
     <?= GridView::widget([

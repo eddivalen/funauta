@@ -86,19 +86,18 @@ class InscripcionController extends \yii\web\Controller
         $institucion = new Institucion();
         $nucleo_fam = new NucleoFamiliar();
         $hisTerapias = new HisTerapiasPaciente();
-        if ( $nucleo_fam->load(Yii::$app->request->post()) && $nucleo_fam->save()){
+        if ($nucleo_fam->load(Yii::$app->request->post()) && $nucleo_fam->save()){
             $nucleo_fam->save(false);
             $paciente->nca_id = $nucleo_fam->id;
             if ($paciente->load(Yii::$app->request->post()) && $paciente->save()) {
                  $paciente->save(false);
                  $hisTerapias->pte_cedula = $paciente->id;
                  if($hisTerapias->load(Yii::$app->request->post()) && $hisTerapias->save())
-                    $hisTerapias->save(false);
-                
+                    $hisTerapias->save(false);    
             }
             return $this->redirect(['view', 'id' => $paciente->cedula]);
            // return $this->redirect(array('view', 'paciente' => $paciente->cedula, 'nucleo_fam' => $nucleo_fam->id));
-        } else {
+        }else {
             return $this->render('create', [
                 'paciente'    => $paciente,
                 'institucion' => $institucion,
@@ -111,16 +110,13 @@ class InscripcionController extends \yii\web\Controller
        public function actionUpdate($id){
         $paciente = Paciente::findOne($id);
         $nucleo_fam = NucleoFamiliar::findOne($paciente->nca_id);
-        $hisTerapias = new HisTerapiasPaciente();
-       // $hisTerapias = HisTerapiasPaciente::findOne($paciente->)
+        $hisTerapias = HisTerapiasPaciente::findOne(['pte_cedula' => $id]);
         if (!$paciente) {
             throw new NotFoundHttpException("The paciente was not found.");
         }
-        
         if (!$nucleo_fam) {
             throw new NotFoundHttpException("The paciente has no nucleo_fam.");
         }
-        
         if ($paciente->load(Yii::$app->request->post()) && $nucleo_fam->load(Yii::$app->request->post()) 
             && $hisTerapias->load(Yii::$app->request->post())) {
             $isValid = $paciente->validate();
@@ -133,12 +129,17 @@ class InscripcionController extends \yii\web\Controller
                 return $this->redirect(['inscripcion/view', 'id' => $id]);
             }
         }
-        
-        return $this->render('update', [
+       return $this->render('update', [
             'paciente'    => $paciente,
             'nucleo_fam'  => $nucleo_fam,
             'hisTerapias' => $hisTerapias,
         ]);
+    }
+    public function actionDelete($id)
+    {
+        $this->findModelPaciente($id)->delete();
+
+        return $this->redirect(['index']);
     }
     public function actionReport() {
         $searchModel = new PacienteSerch();

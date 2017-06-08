@@ -97,11 +97,10 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
             <?= $form->field($hisTerapias, 'tiempo')->textInput(['maxlength' => true]) ?>
 
             <?= $form->field($hisTerapias, 'descripcion')->textInput(['maxlength' => true]) ?>
-
+            
             <div class="form-group">
-                <?= Html::submitButton($paciente->isNewRecord ? 'Inscribir' : 'Actualizar', ['class' => $paciente->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                <?= Html::submitButton($paciente->isNewRecord ? 'Guardar' : 'Actualizar', ['class' => $paciente->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             </div>
-
             <?php ActiveForm::end(); ?>
             </div>
     </div>

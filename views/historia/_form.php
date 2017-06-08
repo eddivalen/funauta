@@ -21,7 +21,7 @@ use kartik\date\DatePicker;
     </div>
     <div class="col-lg-6">
             <?= $form->field($model, 'tto_id')->dropDownList(
-                ArrayHelper::map(Tratamiento::find()->all(), 'id', 'descripcion'),
+                ArrayHelper::map(Tratamiento::find()->all(), 'id', 'indicaciones'),
                 ['prompt'=>'Elegir Tratamiento']
             )->label('Tratamiento')?>
 

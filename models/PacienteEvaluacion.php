@@ -52,7 +52,7 @@ class PacienteEvaluacion extends \yii\db\ActiveRecord
             'id' => 'ID',
             'fecha' => 'Fecha',
             'pte_cedula' => 'Paciente',
-            'motivo' => 'Motivo',
+            'motivo' => 'Diagnóstico',
             'descripcion' => 'Descripcion',
             'eta_cedula' => 'Especialista',
         ];

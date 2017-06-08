@@ -8,7 +8,6 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Paciente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

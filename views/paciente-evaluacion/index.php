@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -8,12 +7,10 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteEvaluacionSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Evaluacion del Paciente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-evaluacion-index">
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
         <?= Html::a('Agregar', ['create'], ['class' => 'btn btn-success']) ?>
@@ -48,5 +45,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
-
 </div>

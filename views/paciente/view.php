@@ -28,33 +28,68 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'cedula',
+            [
+                'attribute'=>'cedula',
+                'label'=>'Cedula Paciente',
+            ], 
             'nombre',
             'apellido',
-            [
-                'attribute'=>'fecha_nacimiento',
-                'label'=>'Fecha de Nacimiento',
-            ], 
-            [
-                'attribute'=>'lugar_nacimiento',
-                'label'=>'Lugar de Nacimiento',
-            ],
+            'fecha_nacimiento',
+            'lugar_nacimiento',
             'edad',
             'sexo',
             [
                 'attribute'=>'rte_cedula',
-                'label'=>'Cedula de Representante',
-            ],
+                'value'=>$model->rteCedula->cedula,
+                'label'=>'Cedula Representante',
+            ], 
             [
-                'attribute'=>'ico_id',
+                'attribute'=>'rte_nombre',
+                'value'=>$model->rteCedula->nombre.' '.$model->rteCedula->apellido,
+                'label'=>'Representante',
+            ], 
+            [
+                'attribute'=>'colegio',
                 'value'=>$model->ico->nombre,
-                'label'=>'Nombre de la Institucion',
-            ],
+                'label'=>'Colegio',
+            ], 
             [
-                'attribute'=>'nca_id',
-                'label'=>'ID de Nucleo Familiar',
-            ],
+                'attribute'=>'madre',
+                'value'=>$model->nca->madre,
+                'label'=>'Cantidad de Madre',
+            ], 
+            [
+                'attribute'=>'padre',
+                'value'=>$model->nca->padre,
+                'label'=>'Cantidad de Padre',
+            ], 
+            [
+                'attribute'=>'tias',
+                'value'=>$model->nca->tias,
+                'label'=>'Cantidad de Tias',
+            ], 
+            [
+                'attribute'=>'tios',
+                'value'=>$model->nca->tios,
+                'label'=>'Cantidad de Tios',
+            ], 
+            [
+                'attribute'=>'abuelos',
+                'value'=>$model->nca->abuelo,
+                'label'=>'Cantidad de Abuelos',
+            ], 
+            [
+                'attribute'=>'otros',
+                'value'=>$model->nca->otros,
+                'label'=>'Otros Parientes',
+            ], 
+            [
+                'attribute'=>'descripcion',
+                'value'=>$model->nca->descripcion,
+                'label'=>'Descripcion',
+            ], 
         ],
+
     ]) ?>
 
 </div>

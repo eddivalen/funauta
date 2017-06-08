@@ -7,7 +7,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $model app\models\TerapiaEspecialista */
 
-$this->title = $model->pteCedula->nombre;
+$this->title = $model->tpa->descripcion;
 $this->params['breadcrumbs'][] = ['label' => 'Terapia Especialistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -37,9 +37,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'label'=>'Cedula Especialista',
             ],
             [
+            'value'=>$model->etaCedula->nombre.' '.$model->etaCedula->apellido,
+            'label'=>'Especialista',
+            ],
+            [
             'attribute'=>'eta_cedula',
             'value'=>$model->pteCedula->cedula,
             'label'=>'Cedula Paciente',
+            ],
+            [
+            'value'=>$model->pteCedula->nombre.' '.$model->pteCedula->apellido,
+            'label'=>'Paciente',
             ],
         ],
     ]) ?>

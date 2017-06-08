@@ -36,6 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'pte_cedula',
                 'label'=>'Cedula del Paciente',
             ],
+            [
+                'value'=>$model->pteCedula->nombre.' '.$model->pteCedula->apellido,
+                'label'=>'Paciente',
+            ],
             'tiempo',
             'descripcion',
         ],

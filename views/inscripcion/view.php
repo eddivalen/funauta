@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Eliminar', ['delete', 'id' => $paciente->cedula], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro de eliminar este elemento?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -49,8 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ], 
             [
                 'attribute'=>'rte_nombre',
-                'value'=>$paciente->rteCedula->nombre,
-                'label'=>'Nombre Representante',
+                'value'=>$paciente->rteCedula->nombre.' '.$paciente->rteCedula->apellido,
+                'label'=>'Representante',
             ], 
             [
                 'attribute'=>'colegio',

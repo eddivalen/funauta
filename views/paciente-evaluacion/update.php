@@ -12,10 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->pteCedula->nombre, 'url' =>
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="paciente-evaluacion-update">
-
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>

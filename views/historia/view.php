@@ -31,9 +31,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'fecha',
             'observaciones',
-            'tto_id',
-            'tta_tpa_id',
-            'tta_eta_cedula',
+            [
+                'attribute'=>'tto_id',
+                'value'=>$model->tto->indicaciones,
+                'label'=>'Indicaciones',
+            ], 
+            [
+                'attribute'=>'tta_tpa_id',
+                'value'=>$model->ttaTpa->tpa->descripcion,
+                'label'=>'Terapia',
+            ], 
+            [
+                'attribute'=>'tta_eta_cedula',
+                'value'=>$model->ttaTpa->etaCedula->cedula,
+                'label'=>'Cedula Especialista',
+            ],
+            [
+                'value'=>$model->ttaTpa->etaCedula->nombre.' '.$model->ttaTpa->etaCedula->apellido,
+                'label'=>'Especialista',
+            ], 
+            [
+                'value'=>$model->tto->pteCedula->nombre.' '.$model->tto->pteCedula->apellido,
+                'label'=>'Paciente',
+            ], 
         ],
     ]) ?>
 

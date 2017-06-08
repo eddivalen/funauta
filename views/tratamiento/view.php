@@ -28,7 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'dosis',
             'posologia',
             'mto_id',
-            'pte_cedula',
+            [
+                'attribute'=>'pte_cedula',
+                'label'=>'Cedula Paciente',
+            ],
+            [
+                'value'=>$model->pteCedula->nombre.' '.$model->pteCedula->apellido ,
+                'label'=>'Paciente',
+            ],
         ],
     ]) ?>
 </div>
