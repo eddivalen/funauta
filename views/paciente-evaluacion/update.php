@@ -11,8 +11,21 @@ $this->params['breadcrumbs'][] = ['label' => 'Paciente Evaluacion', 'url' => ['i
 $this->params['breadcrumbs'][] = ['label' => $model->pteCedula->nombre, 'url' => ['view', 'id' => $model->fecha]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
-<div class="paciente-evaluacion-update">
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+<div class="body-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                   Formulario de evaluación del paciente
+            </div>
+                <div class="panel-body">
+					<div class="paciente-evaluacion-update">
+					    <?= $this->render('_form', [
+					        'model' => $model,
+					    ]) ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

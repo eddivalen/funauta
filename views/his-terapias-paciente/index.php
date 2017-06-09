@@ -9,7 +9,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $searchModel app\models\HisTerapiasPacienteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Historial';
+$this->title = 'Historial de terapias del paciente';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="his-terapias-paciente-index">

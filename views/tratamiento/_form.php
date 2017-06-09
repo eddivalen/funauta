@@ -17,6 +17,7 @@ use app\models\Paciente;
             ArrayHelper::map(Medicamento::find()->all(), 'id', 'nombre'),
             ['prompt'=>'Elegir Medicamento']
         )->label('Medicamento')?>
+        
         <?= $form->field($model, 'pte_cedula')->dropDownList(
             ArrayHelper::map(Paciente::find()->all(), 'cedula', 'nombre','cedula'),
             ['prompt'=>'Elegir Paciente']

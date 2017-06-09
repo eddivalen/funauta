@@ -1,9 +1,6 @@
 <?php
-
 namespace app\models;
-
 use Yii;
-
 /**
  * This is the model class for table "tratamiento".
  *
@@ -34,8 +31,8 @@ class Tratamiento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'indicaciones', 'mto_id', 'pte_cedula'], 'required'],
-            [['id', 'mto_id', 'pte_cedula'], 'integer'],
+            [['indicaciones', 'mto_id', 'pte_cedula'], 'required'],
+            [['mto_id', 'pte_cedula'], 'integer'],
             [['indicaciones'], 'string', 'max' => 256],
             [['dosis', 'posologia'], 'string', 'max' => 45],
             [['mto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Medicamento::className(), 'targetAttribute' => ['mto_id' => 'id']],

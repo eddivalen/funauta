@@ -1,14 +1,12 @@
 <?php
-
 namespace app\controllers;
-
 use Yii;
 use app\models\Tratamiento;
 use app\models\TratamientoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * TratamientoController implements the CRUD actions for Tratamiento model.
  */

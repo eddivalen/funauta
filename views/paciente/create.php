@@ -16,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
                    Formulario de los pacientes
             </div>
                 <div class="panel-body">
-				<div class="paciente-create">
-				    <?= $this->render('_form', [
-				        'model' => $model,
-				    ]) ?>
-				</div>
+					<div class="paciente-create">
+					    <?= $this->render('_form', [
+					        'model' => $model,
+					    ]) ?>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -91,13 +91,13 @@ class InscripcionController extends \yii\web\Controller
             $paciente->nca_id = $nucleo_fam->id;
             if ($paciente->load(Yii::$app->request->post()) && $paciente->save()) {
                  $paciente->save(false);
-                 $hisTerapias->pte_cedula = $paciente->id;
+                 $hisTerapias->pte_cedula = $paciente->cedula;
                  if($hisTerapias->load(Yii::$app->request->post()) && $hisTerapias->save())
                     $hisTerapias->save(false);    
             }
             return $this->redirect(['view', 'id' => $paciente->cedula]);
            // return $this->redirect(array('view', 'paciente' => $paciente->cedula, 'nucleo_fam' => $nucleo_fam->id));
-        }else {
+        }else{
             return $this->render('create', [
                 'paciente'    => $paciente,
                 'institucion' => $institucion,
@@ -137,6 +137,7 @@ class InscripcionController extends \yii\web\Controller
     }
     public function actionDelete($id)
     {
+        $this->findHisTerapiasPaciente($id)->delete();
         $this->findModelPaciente($id)->delete();
 
         return $this->redirect(['index']);
@@ -214,9 +215,9 @@ class InscripcionController extends \yii\web\Controller
     {
        //$customer = Customer::find()->where(['id' => 10])->one();
         //$customer = Customer::findOne(['age' => 30, 'status' => 1]);
-        if (($model = HisTerapiasPaciente::findOne(['pte_cedula' => $id]) !== null)) {
-            $id_enc = $model;
-            $model = HisTerapiasPaciente::findOne($id_enc);
+        if (($model = HisTerapiasPaciente::findOne(['pte_cedula' => $id]) !== null)){
+           // $id_enc = $model->pte_cedula;
+            $model = HisTerapiasPaciente::findOne(['pte_cedula' => $id]);
             //echo  print_r($model);
             return $model;
         }

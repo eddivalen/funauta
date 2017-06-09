@@ -7,15 +7,15 @@ $this->title = 'Inscribir Paciente';
 $this->params['breadcrumbs'][] = ['label' => 'Pacientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="paciente-create">
-	<div class="body-content">
-	    <div class="row">
-	        <div class="col-lg-12">
-	            <div class="panel panel-default">
-	                <div class="panel-heading">
-	                   Formulario de Inscripción
-	                </div>
-	                <div class="panel-body">
+<div class="body-content">
+	<div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   Formulario de Inscripción
+                </div>
+                <div class="panel-body">
+	                <div class="paciente-create">
 					    <?= $this->render('_form', [
 							'paciente'    => $paciente,
 							'institucion' => $institucion,

@@ -16,5 +16,6 @@ use yii\widgets\ActiveForm;
 		        <?= Html::submitButton($model->isNewRecord ? 'Agregar' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 		    </div>
 		<?php ActiveForm::end(); ?>
+	</div>
 </div>
 		

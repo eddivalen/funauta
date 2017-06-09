@@ -17,7 +17,6 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
             	<div class="panel-body">
 					<div id="content-wrapper">
 						<div class="institucion-create">
-
 						    <?= $this->render('_form', [
 						        'model' => $model]) ?>
 						</div>

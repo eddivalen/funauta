@@ -146,9 +146,8 @@ class MensualidadController extends \yii\web\Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
         $this->findModelMensualidadMeses($id)->delete();
-
+        $this->findModelMensualidad($id)->delete();
         return $this->redirect(['index']);
     }
 
@@ -170,6 +169,7 @@ class MensualidadController extends \yii\web\Controller
     protected function findModelMensualidadMeses($id)
     {
         if (($model = MensualidadMeses::findOne(['mdd_id' => $id]) !== null)) {
+            $model = MensualidadMeses::findOne(['mdd_id' => $id]);
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -46,9 +46,9 @@ class TerapiaEspecialista extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'tpa_id' => 'Tpa ID',
-            'eta_cedula' => 'Eta Cedula',
-            'pte_cedula' => 'Pte Cedula',
+            'tpa_id' => 'Terapia',
+            'eta_cedula' => 'Especialista',
+            'pte_cedula' => 'Paciente',
         ];
     }
 
