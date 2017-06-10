@@ -6,12 +6,13 @@ use Yii;
 use app\models\Mensualidad;
 use app\models\MensualidadSearch;
 use app\models\MensualidadMeses;
-use app\models\Meses;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\base\Model;
+use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 /**
  * MensualidadController implements the CRUD actions for Mensualidad model.
  */
@@ -71,13 +72,25 @@ class MensualidadController extends \yii\web\Controller
         $mensualidad       = Mensualidad::findOne($id);
         //No puede ser findOne ---- Cambiar consulta
         $mensualidad_meses = MensualidadMeses::findAll(['mdd_id' => $id]);
+        /*$dataProvider = new ActiveDataProvider(
+            [
+            'query' => MensualidadMeses::findAll(['mdd_id' => $id])
+            ]);*/
+        $dataProvider = new ArrayDataProvider([
+        'key'=>'id',
+        'allModels' => $mensualidad_meses,
+        'sort' => [
+            'attributes' => ['id', 'mdd_id', 'mss_id','monto'],
+        ],
+        ]);
       //  $searchModel       = new MensualidadSearch();
         //$dataProvider      = $searchModel->search($id);
         return $this->render('view', [
             'mensualidad'       => $mensualidad,
             'mensualidad_meses' => $mensualidad_meses,
+            'dataProvider'      => $dataProvider,
         //    'searchModel'       => $searchModel,
-          //  'dataProvider'      => $dataProvider,
+ 
         ]);
     }
 

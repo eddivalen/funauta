@@ -72,7 +72,7 @@ $arrowIcon = FA::i('arrow')->tag('span');
 			</li>
 			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Mensualidad -->
 				<?= Html::a(
-				FA::fw('user') . 'Mensualidad',
+				FA::fw('money') . 'Mensualidad',
 				Url::to(['/mensualidad', 'view' => 'mensualidad'])) 
 				?><?php } ?>
 			</li>

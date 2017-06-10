@@ -5,9 +5,9 @@ use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use app\models\Representante;
 use app\models\MensualidadMeses;
-use app\models\Meses;
 use p2made\helpers\FA;
 use kartik\select2\Select2;
+use kartik\field\FieldRange;
 /* @var $this yii\web\View */
 /* @var $model app\models\Mensualidad */
 /* @var $form yii\widgets\ActiveForm */
@@ -22,7 +22,8 @@ use kartik\select2\Select2;
 	            'options' => ['placeholder' => 'Introduce la fecha'],
 	            'pluginOptions' => [
 	                'autoclose'=>true,
-	                'format' => 'yyyy-mm-dd'
+	                'format' => 'yyyy-mm-dd',
+	                'todayHighlight' => true
 	                ]
 	            ])->label('Fecha del pago');?>
 
@@ -38,11 +39,18 @@ use kartik\select2\Select2;
 	                ArrayHelper::map(Representante::find()->all(), 'cedula', 'nombre','apellido'),
 	                ['prompt'=>'Elegir Representante']
 	            )->label('Cedula del Representante')?>
+	
 
-		<?= $form->field($mensualidad_meses, 'mss_id')->dropDownList(
-	                ArrayHelper::map(Meses::find()->all(), 'id', 'mes','anio'),
-	                ['prompt'=>'Elegir Mes']
-	            )->label('Mes de pago')?>
+	    <?=$form->field($mensualidad_meses, 'mes')->widget(DatePicker::classname(), [
+            'options' => ['placeholder' => 'Elige el mes'],
+            'pluginOptions' => [
+                'autoclose'=>true,
+                'minViewMode'=>'months',
+                'format' => 'yyyy-mm-dd',
+               // 'multidate' => true,
+        		//'multidateSeparator' => ' ; ',
+                ]
+            ])->label('Mes de pago');?>
 	            
 	    <?= $form->field($mensualidad_meses, 'monto')->textInput() ?>
 

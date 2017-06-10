@@ -9,11 +9,10 @@ use Yii;
  *
  * @property integer $id
  * @property integer $mdd_id
- * @property integer $mss_id
+ * @property string $mes
  * @property double $monto
  *
  * @property Mensualidad $mdd
- * @property Meses $mss
  */
 class MensualidadMeses extends \yii\db\ActiveRecord
 {
@@ -31,11 +30,11 @@ class MensualidadMeses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mdd_id', 'mss_id', 'monto'], 'required'],
-            [['mdd_id', 'mss_id'], 'integer'],
+            [['mdd_id', 'mes', 'monto'], 'required'],
+            [['mdd_id'], 'integer'],
+            [['mes'], 'safe'],
             [['monto'], 'number'],
             [['mdd_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mensualidad::className(), 'targetAttribute' => ['mdd_id' => 'id']],
-            [['mss_id'], 'exist', 'skipOnError' => true, 'targetClass' => Meses::className(), 'targetAttribute' => ['mss_id' => 'id']],
         ];
     }
 
@@ -46,8 +45,8 @@ class MensualidadMeses extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'mdd_id' => 'Mensualidad',
-            'mss_id' => 'Mes',
+            'mdd_id' => 'ID Mensualidad',
+            'mes' => 'Mes',
             'monto' => 'Monto',
         ];
     }
@@ -58,13 +57,5 @@ class MensualidadMeses extends \yii\db\ActiveRecord
     public function getMdd()
     {
         return $this->hasOne(Mensualidad::className(), ['id' => 'mdd_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMss()
-    {
-        return $this->hasOne(Meses::className(), ['id' => 'mss_id']);
     }
 }

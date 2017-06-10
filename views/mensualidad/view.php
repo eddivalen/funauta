@@ -6,6 +6,9 @@ use yii\data\ActiveDataProvider;
 use app\models\MensualidadMeses;
 use yii\grid\GridView;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+setlocale(LC_ALL,"es_ES");
 /* @var $this yii\web\View */
 /* @var $model app\models\Mensualidad */
 $this->title = $mensualidad->id_pago;
@@ -50,22 +53,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                             ],
                         ]) ?>
-                        <h3>Pago</h3>
-                         <?= DetailView::widget([
-                            'model' => $mensualidad_meses,
-                            'attributes' => [
+                        <h3>Pagos</h3>
+                        <?= GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
+                                'mdd_id',
                                 [
-                                    'attribute'=>'mss_id',
-                                    'value'=>$mensualidad_meses->mss->mes,
-                                    'label'=>'Mes',
-                                ],
-                                [
-                                    'value'=>$mensualidad_meses->mss->anio,
-                                    'label'=>'Año',
+
+                                    'attribute' => 'mes',
+                                  //  'value'     => $meses[date('n')-1].' '.date('Y'),
+                                   'format' => ['date', 'php:F Y ']
                                 ],
                                 'monto',
                             ],
-                        ]) ?>
+                        ]); ?>
                     </div>
                 </div>
             </div>
