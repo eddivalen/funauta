@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use p2made\helpers\FA;
@@ -18,11 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a('Nuevo', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
         </div>
-       <!--<div class="col-md-1 bt">
+       <div class="col-md-1">
             <p>
-                <?// Html::a('PDF', ['export'], ['class' => 'btn btn-danger']) ?>
+                <?= Html::a('PDF', ['export'], ['class' => 'btn btn-danger']) ?>
             </p>
-        </div>-->
+        </div>
     </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

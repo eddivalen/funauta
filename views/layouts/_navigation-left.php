@@ -96,7 +96,7 @@ $arrowIcon = FA::i('arrow')->tag('span');
 			</li>
 			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Historial Terapias Paciente -->
 				<?= Html::a(
-				FA::fw('folder') . 'Historial Terapias Paciente',
+				FA::fw('folder') . 'Historial de Terapias paciente',
 				Url::to(['/his-terapias-paciente', 'view' => 'his-terapias-paciente'])) 
 				?><?php } ?>
 			</li>

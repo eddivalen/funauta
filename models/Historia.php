@@ -64,6 +64,10 @@ class Historia extends \yii\db\ActiveRecord
     {
         return $this->hasOne(TerapiaEspecialista::className(), ['tpa_id' => 'tta_tpa_id', 'eta_cedula' => 'tta_eta_cedula']);
     }
+    public function getEspName()
+    {
+        return $this->hasOne(Especialista::className(),['cedula' => 'tta_eta_cedula']);
+    }
 
     /**
      * @return \yii\db\ActiveQuery

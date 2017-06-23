@@ -60,10 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ['class' => 'yii\grid\SerialColumn'],
                                 'mdd_id',
                                 [
-
-                                    'attribute' => 'mes',
-                                  //  'value'     => $meses[date('n')-1].' '.date('Y'),
-                                   'format' => ['date', 'php:F Y ']
+                                   'attribute' => 'mes',
+                                   'format'    => ['date', 'php:F Y '] 
                                 ],
                                 'monto',
                             ],

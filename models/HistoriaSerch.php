@@ -18,8 +18,8 @@ class HistoriaSerch extends Historia
     public function rules()
     {
         return [
-            [['id', 'tto_id', 'tta_tpa_id', 'tta_eta_cedula'], 'integer'],
-            [['fecha', 'observaciones'], 'safe'],
+            [['id', 'tto_id', 'tta_tpa_id'], 'integer'],
+            [['fecha', 'observaciones','tta_eta_cedula'], 'safe'],
         ];
     }
 
@@ -42,7 +42,8 @@ class HistoriaSerch extends Historia
     public function search($params)
     {
         $query = Historia::find();
-
+        $query->joinWith('espName');
+      //  $query->joinWith('etaCedula');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -63,10 +64,11 @@ class HistoriaSerch extends Historia
             'fecha' => $this->fecha,
             'tto_id' => $this->tto_id,
             'tta_tpa_id' => $this->tta_tpa_id,
-            'tta_eta_cedula' => $this->tta_eta_cedula,
+            //'tta_eta_cedula' => $this->tta_eta_cedula,
         ]);
 
         $query->andFilterWhere(['like', 'observaciones', $this->observaciones]);
+        $query->andFilterWhere(['like', 'especialista.nombre', $this->tta_eta_cedula]);
 
         return $dataProvider;
     }

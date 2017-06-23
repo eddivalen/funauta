@@ -21,6 +21,7 @@ class Mensualidad extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $rango_fecha;
     public static function tableName()
     {
         return 'mensualidad';
@@ -33,7 +34,7 @@ class Mensualidad extends \yii\db\ActiveRecord
     {
         return [
             [['id_pago', 'fecha', 'rte_cedula'], 'required'],
-            [['fecha'], 'safe'],
+            [['fecha','rango_fecha'], 'safe'],
             [['rte_cedula'], 'integer'],
             [['id_pago', 'banco'], 'string', 'max' => 45],
             [['rte_cedula'], 'exist', 'skipOnError' => true, 'targetClass' => Representante::className(), 'targetAttribute' => ['rte_cedula' => 'cedula']],
