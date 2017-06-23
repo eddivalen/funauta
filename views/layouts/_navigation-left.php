@@ -155,12 +155,24 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				Url::to(['/tipo-especialista', 'view' => 'tipo-especialista'])) 
 				?><?php } ?>
 			</li>		
-			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Tipo Especialista -->
-				<?= Html::a(
-				FA::fw('book') . 'Reportes',
-				Url::to(['/reporte', 'view' => 'reporte'])) 
-				?><?php } ?>
-			</li>			
+			<li><?php if(!Yii::$app->user->isGuest){ ?><!-- Reportes -->
+				<a href="#"><?= FA::fw('book') ?> Reportes<?= $arrowIcon ?></a>
+				<ul class="nav nav-second-level">
+					<li>
+						<?= Html::a(
+						FA::fw('money') . 'Pagos',
+						Url::to(['/reporte/pagosperiodo', 'view' => 'pagosperiodo'])) 
+						?>	
+					</li>
+					<li>
+						<?= Html::a(
+						FA::fw('plus') . 'Pacientes atendidos',
+						Url::to(['/reporte/terapiaspaciente', 'view' => 'terapiaspaciente'])) 
+						?>	
+					</li>
+				</ul>
+				<?php } ?>
+			</li>		
 		</ul>
 	</div>
 </section>

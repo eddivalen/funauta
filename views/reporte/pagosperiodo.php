@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('PDF', ['exportpagos'], ['class' => 'btn btn-danger']) ?>
     </p>
-   </div>
+</div>
 <h4>Listado de todos los pagos para un periodo de fecha dado</h4>
   <br>
 

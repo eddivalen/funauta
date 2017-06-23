@@ -13,7 +13,11 @@ $this->title = 'Reporte';
 $this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
+<div class="col-md-1">
+    <p>
+        <?= Html::a('PDF', ['exportterapiaspaciente'], ['class' => 'btn btn-danger']) ?>
+    </p>
+</div>
 <h3>Listado de pacientes atendidos por terapista</h3>
 
   <?php Pjax::begin(); ?>

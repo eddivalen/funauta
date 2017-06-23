@@ -68,7 +68,11 @@ class MensualidadSearch extends Mensualidad
         $query->andFilterWhere(['like', 'id_pago', $this->id_pago])
             ->andFilterWhere(['like', 'banco', $this->banco]);
 
-        if(!empty($this->rango_fecha) && strpos($this->rango_fecha, '-') !== false) { list($start_date, $end_date) = explode(' - ', $this->rango_fecha); $query->andFilterWhere(['between', 'mensualidad.fecha', strtotime($start_date), strtotime($end_date)]); 
+       // var_dump($this->rango_fecha);
+        if(!empty($this->rango_fecha) && strpos($this->rango_fecha, '-') !== false) { 
+            list($start_date, $end_date) = explode(' - ', $this->rango_fecha); 
+            $query->andFilterWhere(['between', 'mensualidad.fecha', strtotime($start_date), strtotime($end_date)]); 
+            var_dump($start_date);
         }
         return $dataProvider;
     }
