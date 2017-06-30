@@ -22,6 +22,7 @@ class Mensualidad extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     public $rango_fecha;
+    public $fullname_representante;
     public static function tableName()
     {
         return 'mensualidad';

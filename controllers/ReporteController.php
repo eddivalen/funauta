@@ -14,7 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
 use app\models\Historia;
-use app\models\HistoriaSerch;
+use app\models\HistoriaSearch;
 use mPDF;
 use kartik\mpdf\Pdf;
 
@@ -25,7 +25,7 @@ class ReporteController extends \yii\web\Controller
         return [
              'access' => [
                         'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
+                        'only' => ['index','create','update','view','pagosperiodo','terapiaspaciente','exportpagos','exportterapiaspaciente','content'],
                         'rules' => [
                             // allow authenticated users
                             [
@@ -50,51 +50,53 @@ class ReporteController extends \yii\web\Controller
     public function actionPagosperiodo()
     {
     	$mensualidad = new Mensualidad();
-        $searchModel = new MensualidadSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      $searchModel = new MensualidadSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+      if (Yii::$app->request->post()){
+        $get = json_decode(Yii::$app->request->post('get'), true);
+        var_dump($get['MensualidadSearch']['id_pago']);
+        $id_pago = $get['MensualidadSearch']['id_pago'];
+        $rango_fecha = $get['MensualidadSearch']['rango_fecha'];
+        $banco = $get['MensualidadSearch']['banco'];
+        $rte_cedula = $get['MensualidadSearch']['rte_cedula'];
+        $array = $searchModel->searchArray($id_pago,$rango_fecha,$banco,$rte_cedula);
+
+        $mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
+        $mpdf->Output('MyPDF.pdf', 'I');
+
+      }
     	return $this->render('pagosperiodo', [
     			'mensualidad' 		=>$mensualidad,
 				'dataProvider'      =>$dataProvider,
 				'searchModel'       =>$searchModel,
             ]);
     }
-    public function actionExportpagos(){
-      $this->layout='report';
-      $mensualidad = new Mensualidad();
-      $searchModel = new MensualidadSearch();
-      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-      $array = $searchModel->searchArray(Yii::$app->request->queryParams);
-      $mpdf=new mPDF();
-      $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
-      //$mpdf->Output();
-      $mpdf->Output('MyPDF.pdf', 'I');
-      exit;
-    }
-    public function actionExportterapiaspaciente(){
-      $this->layout='report';
-      $historia = new Historia();
-      $searchModel = new HistoriaSerch();
-      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-      $array = $searchModel->searchArray(Yii::$app->request->queryParams);
-      $mpdf=new mPDF();
-      $mpdf->WriteHTML($this->renderPartial('template-terapiaspaciente',['model'=>$array]));
-      //$mpdf->Output();
-      $mpdf->Output('MyPDF.pdf', 'I');
-      exit;
-    }
+    /**
+     * Displays a single Mensualidad model.
+     * @param array $content
+     * @return mixed
+     */
 
     public function actionTerapiaspaciente(){
     	$historia = new Historia();
-    	$searchModel = new HistoriaSerch();
+    	$searchModel = new HistoriaSearch();
     	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->sort = ['defaultOrder' => ['tta_eta_cedula'=>SORT_ASC]];
-    	/*$dataProvider = new ActiveDataProvider([
-		    'query' => Historia::find(),
-		    'sort'=> ['defaultOrder' => ['tta_eta_cedula'=>SORT_ASC]],
-		    'pagination' => [
-		        'pageSize' => 20,
-		    ],
-		]);*/
+     // $dataProvider->sort = ['defaultOrder' => ['tta_eta_cedula'=>SORT_ASC]];
+      
+      if (Yii::$app->request->post()){
+        $get = json_decode(Yii::$app->request->post('get'), true);
+        //var_dump($get);
+      //$tta_eta_cedula = $get['HistoriaSearch'];
+       //var_dump($tta_eta_cedula);
+        $array = $searchModel->searchArray($get);
+        //var_dump($array);
+        /*$mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
+        $mpdf->Output('MyPDF.pdf', 'I');*/
+
+      }
     	return $this->render('terapiaspaciente', [
 				'historia'     =>$historia,
 				'dataProvider' =>$dataProvider,

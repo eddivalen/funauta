@@ -40,7 +40,7 @@ $admin = false;
 
 <ul class="nav navbar-top-links navbar-right">
 	<?php if($simple){ ?> 
-		<a class="navbar-brand" href="">Usuario</a> <?php } ?>
+		<a class="navbar-brand" style="margin-right: 20px;" href="">Usuario</a> <?php } ?>
 	<?php if($admin){ ?> 
 		<a class="navbar-brand" href="">Administrador</a> <?php } ?>
 	<li class="dropdown">

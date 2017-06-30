@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Historia;
-use app\models\HistoriaSerch;
+use app\models\HistoriaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -47,7 +47,7 @@ class HistoriaController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new HistoriaSerch();
+        $searchModel = new HistoriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

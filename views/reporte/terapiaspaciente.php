@@ -15,8 +15,17 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-md-1">
     <p>
-        <?= Html::a('PDF', ['exportterapiaspaciente'], ['class' => 'btn btn-danger']) ?>
-    </p>
+        <?= Html::a('PDF', ['terapiaspaciente'],
+        ['class' => 'btn btn-primary',
+        'data'=>[
+            'method' => 'post',
+            'confirm' => 'Are you sure?',
+            'params'=>[
+                'get'       => json_encode(Yii::$app->request->get()),
+            ],
+        ], 
+        ]);?>
+    </p> 
 </div>
 <h3>Listado de pacientes atendidos por terapista</h3>
 
