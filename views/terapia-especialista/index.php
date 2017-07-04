@@ -33,13 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
             'attribute'=>'eta_cedula',
-            'value'=>'etaCedula.cedula',
-            'label'=>'Cedula Especialista',
+            'value'=>function($model){
+                    return $model->etaCedula->nombre.' '.$model->etaCedula->apellido;
+                },
+            'label'=>'Especialista',
             ],
             [
             'attribute'=>'eta_cedula',
-            'value'=>'pteCedula.cedula',
-            'label'=>'Cedula Paciente',
+            'value'=>function($model){
+                    return $model->pteCedula->nombre.' '.$model->pteCedula->apellido;
+                },
+            'label'=>'Paciente',
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -37,6 +37,7 @@ class Tratamiento extends \yii\db\ActiveRecord
             [['dosis', 'posologia'], 'string', 'max' => 45],
             [['mto_id'], 'exist', 'skipOnError' => true, 'targetClass' => Medicamento::className(), 'targetAttribute' => ['mto_id' => 'id']],
             [['pte_cedula'], 'exist', 'skipOnError' => true, 'targetClass' => Paciente::className(), 'targetAttribute' => ['pte_cedula' => 'cedula']],
+            [['nombre_tratamiento'], 'string', 'max' => 30],
         ];
     }
 
@@ -46,12 +47,13 @@ class Tratamiento extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'indicaciones' => 'Indicaciones',
-            'dosis' => 'Dosis',
-            'posologia' => 'Posologia',
-            'mto_id' => 'Medicamento',
-            'pte_cedula' => 'Paciente',
+            'id'                 => 'ID',
+            'indicaciones'       => 'Indicaciones',
+            'dosis'              => 'Dosis',
+            'posologia'          => 'Posologia',
+            'mto_id'             => 'Medicamento',
+            'pte_cedula'         => 'Paciente',
+            'nombre_tratamiento' =>'Nombre tratamiento'
         ];
     }
 

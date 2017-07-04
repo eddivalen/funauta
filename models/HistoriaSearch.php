@@ -73,9 +73,8 @@ class HistoriaSearch extends Historia
 
         return $dataProvider;
     }
-    public function searchArray($params)
+    public function searchArray($tta_eta_cedula)
     {
-        var_dump($params);
         $query = Historia::find();
         $query->joinWith('espName');
 
@@ -83,12 +82,11 @@ class HistoriaSearch extends Historia
             'query' => $query,
         ]);
 
-        $this->load($params);
         if (!$this->validate()) {
             return $dataProvider;
         }
 
-        $query->andFilterWhere(['like', 'especialista.nombre', $this->tta_eta_cedula]);
+        $query->andFilterWhere(['like', 'especialista.nombre', $tta_eta_cedula]);
         //$query->andFilterWhere(['like', 'especialista.apellido', $this->tta_eta_cedula]);
 
         $array = $dataProvider->getModels();

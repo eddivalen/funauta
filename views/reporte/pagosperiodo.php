@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ['class' => 'btn btn-primary',
         'data'=>[
             'method' => 'post',
-            'confirm' => 'Are you sure?',
+            'confirm' => '¿Estás seguro?',
             'params'=>[
                 'get'       => json_encode(Yii::$app->request->get()),
             ],
@@ -33,11 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <h4>Listado de todos los pagos para un periodo de fecha dado</h4>
   <br>
-
     <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-   // 'pjax' => true,
     'columns' => [
         ['class' => 'kartik\grid\SerialColumn'],
         'id_pago',
@@ -65,7 +63,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'label'=>'Representante',
         ],
     ],
-    
 ]); ?>
 
 

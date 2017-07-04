@@ -18,8 +18,8 @@ class TratamientoSearch extends Tratamiento
     public function rules()
     {
         return [
-            [['id', 'mto_id', 'pte_cedula'], 'integer'],
-            [['indicaciones', 'dosis', 'posologia'], 'safe'],
+            [['id', 'mto_id'], 'integer'],
+            [['indicaciones', 'dosis', 'posologia','nombre_tratamiento','pte_cedula'], 'safe'],
         ];
     }
 
@@ -42,8 +42,7 @@ class TratamientoSearch extends Tratamiento
     public function search($params)
     {
         $query = Tratamiento::find();
-
-        // add conditions that should always apply here
+        $query->joinWith('pteCedula');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -52,22 +51,40 @@ class TratamientoSearch extends Tratamiento
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'mto_id' => $this->mto_id,
-            'pte_cedula' => $this->pte_cedula,
         ]);
 
         $query->andFilterWhere(['like', 'indicaciones', $this->indicaciones])
             ->andFilterWhere(['like', 'dosis', $this->dosis])
             ->andFilterWhere(['like', 'posologia', $this->posologia]);
+        $query->andFilterWhere(['like', 'nombre_tratamiento', $this->nombre_tratamiento]);
+        $query->andFilterWhere(['like', 'paciente.nombre', $this->pte_cedula]);
+        
 
         return $dataProvider;
+    }
+    public function searchArray($nombre_tratamiento,$pte_cedula)
+    {
+        $query = Tratamiento::find();
+        $query->joinWith('pteCedula');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere(['like', 'nombre_tratamiento', $nombre_tratamiento]);
+        $query->andFilterWhere(['like', 'paciente.nombre', $pte_cedula]);
+        
+        $array = $dataProvider->getModels();
+        return $array;
     }
 }

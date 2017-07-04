@@ -167,7 +167,19 @@ $arrowIcon = FA::i('arrow')->tag('span');
 					<li>
 						<?= Html::a(
 						FA::fw('plus') . 'Pacientes atendidos',
-						Url::to(['/reporte/terapiaspaciente', 'view' => 'terapiaspaciente'])) 
+						Url::to(['/reporte/pacienteespecialista', 'view' => 'pacienteespecialista'])) 
+						?>	
+					</li>
+					<li>
+						<?= Html::a(
+						FA::fw('group') . 'Terapias paciente',
+						Url::to(['/reporte/terapiapaciente', 'view' => 'terapiapaciente'])) 
+						?>	
+					</li>
+					<li>
+						<?= Html::a(
+						FA::fw('hospital-o') . 'Tratamiento paciente',
+						Url::to(['/reporte/tratamientopaciente', 'view' => 'tratamientopaciente'])) 
 						?>	
 					</li>
 				</ul>

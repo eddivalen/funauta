@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            'nombre_tratamiento',
             'indicaciones',
             'dosis',
             'posologia',

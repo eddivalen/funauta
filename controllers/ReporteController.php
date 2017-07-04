@@ -4,6 +4,10 @@ use Yii;
 use app\models\Mensualidad;
 use app\models\MensualidadSearch;
 use app\models\MensualidadMeses;
+use app\models\TerapiaEspecialista;
+use app\models\TerapiaEspecialistaSerch;
+use app\models\Tratamiento;
+use app\models\TratamientoSearch;
 use app\models\Pagosperiodo;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -79,30 +83,67 @@ class ReporteController extends \yii\web\Controller
      * @return mixed
      */
 
-    public function actionTerapiaspaciente(){
+    public function actionPacienteespecialista(){
     	$historia = new Historia();
     	$searchModel = new HistoriaSearch();
     	$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-     // $dataProvider->sort = ['defaultOrder' => ['tta_eta_cedula'=>SORT_ASC]];
+        $dataProvider->sort = ['defaultOrder' => ['tta_eta_cedula'=>SORT_ASC]];
       
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        //var_dump($get);
-      //$tta_eta_cedula = $get['HistoriaSearch'];
-       //var_dump($tta_eta_cedula);
-        $array = $searchModel->searchArray($get);
-        //var_dump($array);
-        /*$mpdf=new mPDF();
-        $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');*/
-
+        $tta_eta_cedula = $get['HistoriaSearch']['tta_eta_cedula'];
+        $array = $searchModel->searchArray($tta_eta_cedula);
+        $mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('template-pacienteespecialista',['model'=>$array]));
+        $mpdf->Output('MyPDF.pdf', 'I');
       }
-    	return $this->render('terapiaspaciente', [
+    	return $this->render('pacienteespecialista', [
 				'historia'     =>$historia,
 				'dataProvider' =>$dataProvider,
 				'searchModel'  =>$searchModel,
             ]);
-
+    }
+    public function actionTerapiapaciente(){
+        $terapiapaciente = new TerapiaEspecialista();
+        $searchModel = new TerapiaEspecialistaSerch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['pte_cedula'=>SORT_ASC]];
+      
+      if (Yii::$app->request->post()){
+        $get = json_decode(Yii::$app->request->post('get'), true);
+        $tpa_id = $get['TerapiaEspecialistaSerch']['tpa_id'];
+        $pte_cedula = $get['TerapiaEspecialistaSerch']['pte_cedula'];
+        $array = $searchModel->searchArray($tpa_id,$pte_cedula);
+        $mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('template-terapiapaciente',['model'=>$array]));
+        $mpdf->Output('MyPDF.pdf', 'I');
+      }
+        return $this->render('terapiapaciente', [
+                'terapiapaciente' =>$terapiapaciente,
+                'dataProvider'    =>$dataProvider,
+                'searchModel'     =>$searchModel,
+            ]);
+    }
+    public function actionTratamientopaciente(){
+        $tratamiento = new Tratamiento();
+        $searchModel = new TratamientoSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->sort = ['defaultOrder' => ['pte_cedula'=>SORT_ASC]];
+      
+      if (Yii::$app->request->post()){
+        $get = json_decode(Yii::$app->request->post('get'), true);
+        $nombre_tratamiento = $get['TratamientoSearch']['nombre_tratamiento'];
+        $pte_cedula = $get['TratamientoSearch']['pte_cedula'];
+        $array = $searchModel->searchArray($nombre_tratamiento,$pte_cedula);
+        $mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('template-tratamientopaciente',['model'=>$array]));
+        $mpdf->Output('MyPDF.pdf', 'I');
+      }
+        return $this->render('tratamientopaciente', [
+                'tratamiento'  =>$tratamiento,
+                'dataProvider' =>$dataProvider,
+                'searchModel'  =>$searchModel,
+            ]);
     }
 
 }

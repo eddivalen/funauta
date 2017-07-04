@@ -18,7 +18,7 @@ class TerapiaEspecialistaSerch extends TerapiaEspecialista
     public function rules()
     {
         return [
-            [['tpa_id', 'eta_cedula', 'pte_cedula'], 'integer'],
+            [['pte_cedula','eta_cedula','tpa_id'],'safe'],
         ];
     }
 
@@ -41,7 +41,9 @@ class TerapiaEspecialistaSerch extends TerapiaEspecialista
     public function search($params)
     {
         $query = TerapiaEspecialista::find();
-
+        $query->joinWith('pteCedula');
+        $query->joinWith('etaCedula');
+        $query->joinWith('tpa');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -58,11 +60,34 @@ class TerapiaEspecialistaSerch extends TerapiaEspecialista
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'tpa_id' => $this->tpa_id,
-            'eta_cedula' => $this->eta_cedula,
-            'pte_cedula' => $this->pte_cedula,
+           // 'tpa_id' => $this->tpa_id,
+           // 'eta_cedula' => $this->eta_cedula,
+           // 'pte_cedula' => $this->pte_cedula,
         ]);
+        $query->andFilterWhere(['like', 'terapia.descripcion', $this->tpa_id]);
+        $query->andFilterWhere(['like', 'paciente.nombre', $this->pte_cedula]);
+        $query->andFilterWhere(['like', 'especialista.nombre', $this->eta_cedula]);
 
         return $dataProvider;
+    }
+    public function searchArray($tpa_id,$pte_cedula)
+    {
+        $query = TerapiaEspecialista::find();
+        $query->joinWith('pteCedula');
+        $query->joinWith('tpa');
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        if (!$this->validate()) {
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere(['like', 'terapia.descripcion', $tpa_id]);
+        $query->andFilterWhere(['like', 'paciente.nombre', $pte_cedula]);
+
+        $array = $dataProvider->getModels();
+        return $array;
     }
 }

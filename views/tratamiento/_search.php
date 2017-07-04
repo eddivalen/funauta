@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'nombre_tratamiento') ?>
+
     <?= $form->field($model, 'indicaciones') ?>
 
     <?= $form->field($model, 'dosis') ?>

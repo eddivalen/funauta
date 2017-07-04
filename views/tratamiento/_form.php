@@ -6,12 +6,17 @@ use app\models\Medicamento;
 use app\models\Paciente;
 ?>
 <div class="tratamiento-form"> 
-    <div class="col-lg-8">
+    <div class="col-lg-6">
         <?php $form = ActiveForm::begin(); ?>
 
+        <?= $form->field($model, 'nombre_tratamiento')->textInput(['maxlength' => true]) ?>
+
         <?= $form->field($model, 'indicaciones')->textInput(['maxlength' => true]) ?>
+
         <?= $form->field($model, 'dosis')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'posologia')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-lg-6">
+     <?= $form->field($model, 'posologia')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($model, 'mto_id')->dropDownList(
             ArrayHelper::map(Medicamento::find()->all(), 'id', 'nombre'),
@@ -28,4 +33,5 @@ use app\models\Paciente;
         </div>
         <?php ActiveForm::end(); ?>
     </div>
+
 </div>

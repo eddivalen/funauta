@@ -84,9 +84,6 @@ class MensualidadSearch extends Mensualidad
     {
         $query = Mensualidad::find();
         $query->joinWith('rteCedula');
-        //$query = Post::find()->where(['status' => 1]);
-        // add conditions that should always apply here
-        //$this->load($params);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
