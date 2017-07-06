@@ -21,7 +21,7 @@ class MensualidadSearch extends Mensualidad
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id','monto'], 'integer'],
             [['id_pago', 'fecha', 'banco','rango_fecha','rte_cedula'], 'safe'],
         ];
     }
@@ -46,7 +46,7 @@ class MensualidadSearch extends Mensualidad
     {
         $query = Mensualidad::find();
         $query->joinWith('rteCedula');
-        // add conditions that should always apply here
+        $query->joinWith('mensualidadMeses');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,8 +55,6 @@ class MensualidadSearch extends Mensualidad
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
@@ -64,7 +62,7 @@ class MensualidadSearch extends Mensualidad
         $query->andFilterWhere([
             'id' => $this->id,
             'fecha' => $this->fecha,
-           // 'rte_cedula' => $this->rte_cedula,
+            'monto' => $this->monto,
         ]);
 
         $query->andFilterWhere(['like', 'id_pago', $this->id_pago])
@@ -80,20 +78,22 @@ class MensualidadSearch extends Mensualidad
 
         return $dataProvider;
     }
-    public function searchArray($id_pago,$rango_fecha,$banco,$rte_cedula)
+    public function searchArray($id_pago,$rango_fecha,$banco,$rte_cedula,$monto)
     {
         $query = Mensualidad::find();
         $query->joinWith('rteCedula');
+        $query->joinWith('mensualidadMeses');
 
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
-        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'fecha' => $this->fecha,
+            'monto' => $monto,
         ]);
 
         $query->andFilterWhere(['like', 'id_pago', $id_pago])
@@ -109,14 +109,6 @@ class MensualidadSearch extends Mensualidad
             $query->where(['between','fecha',$start_date,$end_date])->all();
         }
        
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        'sort' => [
-            'defaultOrder' => [
-                'fecha' => SORT_ASC,
-                ]
-            ],
-        ]);
        $array = $dataProvider->getModels();
         return $array;
     }

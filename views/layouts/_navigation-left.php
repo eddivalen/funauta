@@ -166,13 +166,19 @@ $arrowIcon = FA::i('arrow')->tag('span');
 					</li>
 					<li>
 						<?= Html::a(
-						FA::fw('plus') . 'Pacientes atendidos',
+						FA::fw('frown-o ') . 'Listado de morosos',
+						Url::to(['/reporte/representantesmorosos', 'view' => 'representantesmorosos'])) 
+						?>	
+					</li>
+					<li>
+						<?= Html::a(
+						FA::fw('user-md ') . 'Pacientes atendidos',
 						Url::to(['/reporte/pacienteespecialista', 'view' => 'pacienteespecialista'])) 
 						?>	
 					</li>
 					<li>
 						<?= Html::a(
-						FA::fw('group') . 'Terapias paciente',
+						FA::fw('plus') . 'Terapias paciente',
 						Url::to(['/reporte/terapiapaciente', 'view' => 'terapiapaciente'])) 
 						?>	
 					</li>
@@ -180,6 +186,12 @@ $arrowIcon = FA::i('arrow')->tag('span');
 						<?= Html::a(
 						FA::fw('hospital-o') . 'Tratamiento paciente',
 						Url::to(['/reporte/tratamientopaciente', 'view' => 'tratamientopaciente'])) 
+						?>	
+					</li>
+					<li>
+						<?= Html::a(
+						FA::fw('tint') . 'Medicamento Paciente',
+						Url::to(['/reporte/medicamentopaciente', 'view' => 'medicamentopaciente'])) 
 						?>	
 					</li>
 				</ul>

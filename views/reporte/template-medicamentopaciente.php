@@ -80,11 +80,8 @@
       <thead>
        <tr>
         <th>No</th>
-        <th>ID PAGO</th>
-        <th>FECHA</th>
-        <th>BANCO</th>
-        <th>REPRESENTANTE</th>
-        <th>MONTO</th>
+        <th>MEDICAMENTO</th>
+        <th>PACIENTE</th>
        </tr>
       </thead>
       <?php
@@ -93,14 +90,12 @@
         echo '
          <tr>
           <td>'.$i.'</td>
-          <td>'.$data['id_pago'].'</td>
-          <td>'.$data['fecha'].'</td>
-          <td>'.$data['banco'].'</td>
-          <td>'.$data->rteCedula->nombre.' '.$data->rteCedula->apellido.'</td>
-          <td>'.$data['monto'].'</td>
+          <td>'.$data->mto->nombre.'</td>
+          <td>'.$data->pteCedula->nombre.' '.$data->pteCedula->apellido.'</td>
          </tr>
         ';
         $i++;
        }
       ?>
      </table>
+     

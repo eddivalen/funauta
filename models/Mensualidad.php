@@ -34,9 +34,10 @@ class Mensualidad extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_pago', 'fecha', 'rte_cedula'], 'required'],
+            [['id_pago', 'fecha', 'rte_cedula','monto'], 'required'],
             [['fecha','rango_fecha'], 'safe'],
             [['rte_cedula'], 'integer'],
+            [['monto'], 'number'],
             [['id_pago', 'banco'], 'string', 'max' => 45],
             [['rte_cedula'], 'exist', 'skipOnError' => true, 'targetClass' => Representante::className(), 'targetAttribute' => ['rte_cedula' => 'cedula']],
         ];
@@ -53,6 +54,7 @@ class Mensualidad extends \yii\db\ActiveRecord
             'fecha' => 'Fecha',
             'banco' => 'Banco',
             'rte_cedula' => 'Representante',
+            'monto' => 'Monto',
         ];
     }
 

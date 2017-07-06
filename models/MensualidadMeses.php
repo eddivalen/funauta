@@ -30,10 +30,9 @@ class MensualidadMeses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mdd_id', 'mes', 'monto'], 'required'],
+            [['mdd_id', 'mes'], 'required'],
             [['mdd_id'], 'integer'],
             [['mes'], 'safe'],
-            [['monto'], 'number'],
             [['mdd_id'], 'exist', 'skipOnError' => true, 'targetClass' => Mensualidad::className(), 'targetAttribute' => ['mdd_id' => 'id']],
         ];
     }
@@ -47,7 +46,6 @@ class MensualidadMeses extends \yii\db\ActiveRecord
             'id' => 'ID',
             'mdd_id' => 'ID Mensualidad',
             'mes' => 'Mes',
-            'monto' => 'Monto',
         ];
     }
 

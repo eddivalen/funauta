@@ -52,7 +52,7 @@ use kartik\field\FieldRange;
                 ]
             ])->label('Mes de pago');?>
 	            
-	    <?= $form->field($mensualidad_meses, 'monto')->textInput() ?>
+	    <?= $form->field($mensualidad, 'monto')->textInput() ?>
 
 	    <div class="form-group">
 	        <?= Html::submitButton($mensualidad->isNewRecord ? 'Agregar' : 'Actualizar', ['class' => $mensualidad->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

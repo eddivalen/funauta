@@ -51,9 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'value'=>$mensualidad->rteCedula->nombre.' '.$mensualidad->rteCedula->apellido,
                                     'label'=>'Representante',
                                 ],
+                                'monto',
                             ],
                         ]) ?>
-                        <h3>Pagos</h3>
+                        <h3>Meses</h3>
                         <?= GridView::widget([
                             'dataProvider' => $dataProvider,
                             'columns' => [
@@ -63,7 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                    'attribute' => 'mes',
                                    'format'    => ['date', 'php:F Y '] 
                                 ],
-                                'monto',
                             ],
                         ]); ?>
                     </div>

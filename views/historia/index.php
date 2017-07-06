@@ -41,6 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>'ttaTpa.etaCedula.nombre',
                 'label'=>'Especialista',
             ],
+            [
+                'value'=>function($model){
+                    return $model->tto->pteCedula->nombre.' '.$model->tto->pteCedula->apellido;
+                },
+                'label'=>'Paciente',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

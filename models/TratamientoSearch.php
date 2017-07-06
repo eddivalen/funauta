@@ -18,8 +18,8 @@ class TratamientoSearch extends Tratamiento
     public function rules()
     {
         return [
-            [['id', 'mto_id'], 'integer'],
-            [['indicaciones', 'dosis', 'posologia','nombre_tratamiento','pte_cedula'], 'safe'],
+            [['id'], 'integer'],
+            [['indicaciones', 'dosis', 'posologia','nombre_tratamiento','pte_cedula','mto_id'], 'safe'],
         ];
     }
 
@@ -43,6 +43,7 @@ class TratamientoSearch extends Tratamiento
     {
         $query = Tratamiento::find();
         $query->joinWith('pteCedula');
+        $query->joinWith('mto');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,7 +57,7 @@ class TratamientoSearch extends Tratamiento
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'mto_id' => $this->mto_id,
+           // 'mto_id' => $this->mto_id,
         ]);
 
         $query->andFilterWhere(['like', 'indicaciones', $this->indicaciones])
@@ -64,15 +65,16 @@ class TratamientoSearch extends Tratamiento
             ->andFilterWhere(['like', 'posologia', $this->posologia]);
         $query->andFilterWhere(['like', 'nombre_tratamiento', $this->nombre_tratamiento]);
         $query->andFilterWhere(['like', 'paciente.nombre', $this->pte_cedula]);
+        $query->andFilterWhere(['like', 'medicamento.nombre', $this->mto_id]);
         
 
         return $dataProvider;
     }
-    public function searchArray($nombre_tratamiento,$pte_cedula)
+    public function searchArray($nombre_tratamiento,$pte_cedula,$mto_id)
     {
         $query = Tratamiento::find();
         $query->joinWith('pteCedula');
-
+        $query->joinWith('mto');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -83,6 +85,7 @@ class TratamientoSearch extends Tratamiento
 
         $query->andFilterWhere(['like', 'nombre_tratamiento', $nombre_tratamiento]);
         $query->andFilterWhere(['like', 'paciente.nombre', $pte_cedula]);
+        $query->andFilterWhere(['like', 'medicamento.nombre', $mto_id]);
         
         $array = $dataProvider->getModels();
         return $array;

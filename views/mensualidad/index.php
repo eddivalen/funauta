@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fecha',
             'banco',
             'rte_cedula',
-
+            'monto',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

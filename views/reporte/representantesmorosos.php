@@ -12,13 +12,13 @@ use p2made\helpers\FA;
 use kartik\field\FieldRange;
 use yii\helpers\ArrayHelper;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
-$this->title = 'Pagos';
+$this->title = 'Morosos';
 $this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-md-1">
     <p>
-        <?= Html::a('PDF', ['pagosperiodo'],
+        <?= Html::a('PDF', ['representantesmorosos'],
         ['class' => 'btn btn-primary',
         'data'=>[
             'method' => 'post',
@@ -30,38 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);?>
     </p> 
 </div>
-<h4>Listado de todos los pagos para un periodo de fecha dado</h4>
+<h4>Listado de morosos</h4>
   <br>
     <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
         ['class' => 'kartik\grid\SerialColumn'],
-        'id_pago',
-        [
-            'attribute' => 'rango_fecha',
-            'value' => 'fecha',
-            'format'=>'raw',
-            'options' => ['style' => 'width: 25%;'],
-            'filter' => DateRangePicker::widget([
-                'model' => $searchModel,
-                'attribute' => 'rango_fecha',
-                'useWithAddon'=>false,
-                'convertFormat'=>true,
-                'pluginOptions'=>[
-                    'locale'=>['format'=>'Y-m-d']
-                ],
-            ])
-        ],
-        'banco',
-        [
-            'attribute'=>'rte_cedula',
-            'value'=>function($model){
-                return $model->rteCedula->nombre.' '.$model->rteCedula->apellido;
-            },
-            'label'=>'Representante',
-        ],
-        'monto',
+        'cedula',
+        'nombre',
+        'apellido',
     ],
 ]); ?>
 

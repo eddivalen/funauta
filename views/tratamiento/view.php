@@ -38,7 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'indicaciones',
                                 'dosis',
                                 'posologia',
-                                'mto_id',
+                                [
+                                    'attribute'=>'mto_id',
+                                    'value'=>function($model){
+                                        return $model->mto->nombre;
+                                    },
+                                    'label'=>'Medicamento',
+                                ],
                                 [
                                     'attribute'=>'pte_cedula',
                                     'label'=>'Cedula Paciente',
