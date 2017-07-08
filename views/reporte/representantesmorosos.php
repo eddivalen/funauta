@@ -1,16 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 use kartik\grid\GridView;
 use yii\widgets\ActiveForm;
-use kartik\date\DatePicker;
-use kartik\daterange\DateRangePicker;
-use app\models\Representante;
-use app\models\Pagosperiodo;
 use p2made\helpers\FA;
-use kartik\field\FieldRange;
-use yii\helpers\ArrayHelper;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 $this->title = 'Morosos';
 $this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];

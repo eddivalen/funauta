@@ -154,7 +154,13 @@ $arrowIcon = FA::i('arrow')->tag('span');
 				FA::fw('arrow-circle-up') . 'Asignar Especialista',
 				Url::to(['/tipo-especialista', 'view' => 'tipo-especialista'])) 
 				?><?php } ?>
-			</li>		
+			</li>	
+			<li><?php if(!Yii::$app->user->isGuest){ ?> <!-- Tipo Especialista -->
+				<?= Html::a(
+				FA::fw('envelope-o') . 'Enviar correos',
+				Url::to(['/emails/create', 'view' => 'create'])) 
+				?><?php } ?>
+			</li>	
 			<li><?php if(!Yii::$app->user->isGuest){ ?><!-- Reportes -->
 				<a href="#"><?= FA::fw('book') ?> Reportes<?= $arrowIcon ?></a>
 				<ul class="nav nav-second-level">

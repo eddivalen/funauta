@@ -32,7 +32,7 @@ class ReporteController extends \yii\web\Controller
         return [
              'access' => [
                         'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view','pagosperiodo','terapiaspaciente','exportpagos','exportterapiaspaciente','content'],
+                        'only' => ['index','create','update','view','pagosperiodo','terapiaspaciente','exportpagos','content'],
                         'rules' => [
                             // allow authenticated users
                             [
