@@ -62,13 +62,17 @@ class ReporteController extends \yii\web\Controller
 
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        $id_pago = $get['MensualidadSearch']['id_pago'];
-        $rango_fecha = $get['MensualidadSearch']['rango_fecha'];
-        $banco = $get['MensualidadSearch']['banco'];
-        $rte_cedula = $get['MensualidadSearch']['rte_cedula'];
-        $monto = $get['MensualidadSearch']['monto'];
-        $array = $searchModel->searchArray($id_pago,$rango_fecha,$banco,$rte_cedula,$monto);
-        //var_dump($array);
+        $value = ArrayHelper::getValue($get, 'MensualidadSearch');
+        if($value){
+            $id_pago = $get['MensualidadSearch']['id_pago'];
+            $rango_fecha = $get['MensualidadSearch']['rango_fecha'];
+            $banco = $get['MensualidadSearch']['banco'];
+            $rte_cedula = $get['MensualidadSearch']['rte_cedula'];
+            $monto = $get['MensualidadSearch']['monto'];
+            $array = $searchModel->searchArray($id_pago,$rango_fecha,$banco,$rte_cedula,$monto);
+        }else{
+            $array = $searchModel->searchArray(null,null,null,null,null);
+        }
         $mpdf=new mPDF();
         $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
@@ -93,8 +97,13 @@ class ReporteController extends \yii\web\Controller
       
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        $tta_eta_cedula = $get['HistoriaSearch']['tta_eta_cedula'];
-        $array = $searchModel->searchArray($tta_eta_cedula);
+        $value = ArrayHelper::getValue($get, 'HistoriaSearch');
+        if($value){
+            $tta_eta_cedula = $get['HistoriaSearch']['tta_eta_cedula'];
+            $array = $searchModel->searchArray($tta_eta_cedula);
+        }else{
+            $array = $searchModel->searchArray(null);
+        }
         $mpdf=new mPDF();
         $mpdf->WriteHTML($this->renderPartial('template-pacienteespecialista',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
@@ -113,9 +122,14 @@ class ReporteController extends \yii\web\Controller
       
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        $tpa_id = $get['TerapiaEspecialistaSerch']['tpa_id'];
-        $pte_cedula = $get['TerapiaEspecialistaSerch']['pte_cedula'];
-        $array = $searchModel->searchArray($tpa_id,$pte_cedula);
+        $value = ArrayHelper::getValue($get, 'TerapiaEspecialistaSerch');
+        if($value){
+           $tpa_id = $get['TerapiaEspecialistaSerch']['tpa_id'];
+           $pte_cedula = $get['TerapiaEspecialistaSerch']['pte_cedula'];
+           $array = $searchModel->searchArray($tpa_id,$pte_cedula); 
+        }else{
+            $array = $searchModel->searchArray(null,null); 
+        }
         $mpdf=new mPDF();
         $mpdf->WriteHTML($this->renderPartial('template-terapiapaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
@@ -134,9 +148,14 @@ class ReporteController extends \yii\web\Controller
       
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        $nombre_tratamiento = $get['TratamientoSearch']['nombre_tratamiento'];
-        $pte_cedula = $get['TratamientoSearch']['pte_cedula'];
-        $array = $searchModel->searchArray($nombre_tratamiento,$pte_cedula,null);
+        $value = ArrayHelper::getValue($get, 'TratamientoSearch');
+        if($value){
+            $nombre_tratamiento = $get['TratamientoSearch']['nombre_tratamiento'];
+            $pte_cedula = $get['TratamientoSearch']['pte_cedula'];
+            $array = $searchModel->searchArray($nombre_tratamiento,$pte_cedula,null);
+        }else{
+            $array = $searchModel->searchArray(null,null,null);
+        }
         $mpdf=new mPDF();
         $mpdf->WriteHTML($this->renderPartial('template-tratamientopaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
@@ -155,9 +174,14 @@ class ReporteController extends \yii\web\Controller
       
       if (Yii::$app->request->post()){
         $get = json_decode(Yii::$app->request->post('get'), true);
-        $mto_id = $get['TratamientoSearch']['mto_id'];
-        $pte_cedula = $get['TratamientoSearch']['pte_cedula'];
-        $array = $searchModel->searchArray(null,$pte_cedula,$mto_id);
+        $value = ArrayHelper::getValue($get, 'TratamientoSearch');
+        if($value){
+            $mto_id = $get['TratamientoSearch']['mto_id'];
+            $pte_cedula = $get['TratamientoSearch']['pte_cedula'];
+            $array = $searchModel->searchArray(null,$pte_cedula,$mto_id);
+        }else{
+          $array = $searchModel->searchArray(null,null,null);  
+        }
         $mpdf=new mPDF();
         $mpdf->WriteHTML($this->renderPartial('template-medicamentopaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
