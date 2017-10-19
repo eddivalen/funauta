@@ -84,9 +84,21 @@ class MensualidadSearch extends Mensualidad
         $query->joinWith('rteCedula');
         $query->joinWith('mensualidadMeses');
 
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 999999999,
+            ]
+        ]);
+        $totalCount = $provider->getTotalCount();
+        echo $totalCount;
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => $totalCount,
+            ]
         ]);
+        
         if (!$this->validate()) {
             return $dataProvider;
         }

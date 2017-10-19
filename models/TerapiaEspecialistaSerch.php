@@ -76,8 +76,19 @@ class TerapiaEspecialistaSerch extends TerapiaEspecialista
         $query->joinWith('pteCedula');
         $query->joinWith('tpa');
 
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 999999999,
+            ]
+        ]);
+        $totalCount = $provider->getTotalCount();
+        echo $totalCount;
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => $totalCount,
+            ]
         ]);
 
         if (!$this->validate()) {

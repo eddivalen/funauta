@@ -20,6 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yidas/yii2-composer-bower-skip": "^2.0",
         "components/font-awesome": "^4.7",
+        "rmrevin/yii2-fontawesome": "~2.17",
         "p2made/yii2-p2y2-things": "^1.15",
         "p2made/yii2-sb-admin-theme": "^1.5",
         "kartik-v/yii2-widget-select2": "@dev",
@@ -28,7 +29,8 @@
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-field-range": "*",
         "kartik-v/yii2-date-range": "*",
-        "kartik-v/yii2-export": "*"
+        "kartik-v/yii2-export": "*",
+        "mpdf/mpdf": "^6.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -4,10 +4,10 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'language' => 'en-US',
+    'language' => 'es-ES',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'sourceLanguage' => 'en-US',
+    'sourceLanguage' => 'es-ES',
     'modules' => [
        'gridview' =>  [
             'class' => '\kartik\grid\Module'
