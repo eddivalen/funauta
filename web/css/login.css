@@ -1,11 +1,11 @@
 body{
-	background-image: url('../images/funauta4.jpg');
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: 100%;
-	opacity: 0.8;
+	background-image: url(/funauta/imagen/funauta4.jpg) !important;
+	background-repeat: no-repeat !important;
+	background-position: top !important;
+	background-size: 100% !important;
+	opacity: 0.8 !important;
 
 }
 h3.panel-title.text-center{
-	    font-weight: bold;
+	    font-weight: bold !important;
 }
