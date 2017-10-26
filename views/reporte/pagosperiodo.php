@@ -61,6 +61,11 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'label'=>'Representante',
         ],
+        [
+                'attribute' =>'rte_cedula',
+                'label'     =>'Cedula',
+                'filter'    => ''
+        ],
         'monto',
     ],
 ]); ?>

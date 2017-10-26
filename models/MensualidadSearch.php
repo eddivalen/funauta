@@ -62,7 +62,7 @@ class MensualidadSearch extends Mensualidad
         $query->andFilterWhere([
             'id' => $this->id,
             'fecha' => $this->fecha,
-            'monto' => $this->monto,
+            'monto' => $this->monto
         ]);
 
         $query->andFilterWhere(['like', 'id_pago', $this->id_pago])
@@ -73,8 +73,7 @@ class MensualidadSearch extends Mensualidad
             $query->where(['between','fecha',$start_date,$end_date])->all();
         }
 
-         $query->andFilterWhere(['like', 'representante.nombre', $this->rte_cedula]);
-         //$query->andFilterWhere(['like', 'representante.apellido', $this->rte_cedula]);
+         $query->andFilterWhere(['like', 'rte_cedula', $this->rte_cedula]);
 
         return $dataProvider;
     }
@@ -91,7 +90,7 @@ class MensualidadSearch extends Mensualidad
             ]
         ]);
         $totalCount = $provider->getTotalCount();
-        echo $totalCount;
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -105,14 +104,13 @@ class MensualidadSearch extends Mensualidad
         $query->andFilterWhere([
             'id' => $this->id,
             'fecha' => $this->fecha,
-            'monto' => $monto,
+            'monto' => $monto
         ]);
 
         $query->andFilterWhere(['like', 'id_pago', $id_pago])
             ->andFilterWhere(['like', 'banco', $banco]);
 
-        $query->andFilterWhere(['like', 'representante.nombre', $rte_cedula]);
-        $query->andFilterWhere(['like', 'representante.apellido', $rte_cedula]);
+        $query->andFilterWhere(['like', 'rte_cedula', $rte_cedula]);
 
         if(!empty($rango_fecha) && strpos($rango_fecha, '-') !== false)
         { 
@@ -123,5 +121,6 @@ class MensualidadSearch extends Mensualidad
        
        $array = $dataProvider->getModels();
         return $array;
+        
     }
 }
