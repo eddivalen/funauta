@@ -27,6 +27,8 @@ use kartik\mpdf\Pdf;
 
 class ReporteController extends \yii\web\Controller
 {
+
+        
 	public function behaviors()
     {
         return [
@@ -73,7 +75,9 @@ class ReporteController extends \yii\web\Controller
         }else{
             $array = $searchModel->searchArray(null,null,null,null,null);
         }
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }
@@ -104,7 +108,9 @@ class ReporteController extends \yii\web\Controller
         }else{
             $array = $searchModel->searchArray(null);
         }
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-pacienteespecialista',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }
@@ -130,7 +136,9 @@ class ReporteController extends \yii\web\Controller
         }else{
             $array = $searchModel->searchArray(null,null); 
         }
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-terapiapaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }
@@ -156,7 +164,9 @@ class ReporteController extends \yii\web\Controller
         }else{
             $array = $searchModel->searchArray(null,null,null);
         }
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-tratamientopaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }
@@ -182,7 +192,9 @@ class ReporteController extends \yii\web\Controller
         }else{
           $array = $searchModel->searchArray(null,null,null);  
         }
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-medicamentopaciente',['model'=>$array]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }
@@ -217,7 +229,9 @@ class ReporteController extends \yii\web\Controller
       $models = $dataProvider->getModels();
        
       if (Yii::$app->request->post()){
-        $mpdf=new mPDF();
+        $mpdf=new mPDF('utf-8','A4','','',15,15,35,20,5,5); 
+        $mpdf->SetHTMLHeader('<div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
+            </div>');
         $mpdf->WriteHTML($this->renderPartial('template-representantesmorosos',['model'=>$models]));
         $mpdf->Output('MyPDF.pdf', 'I');
       }

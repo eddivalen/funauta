@@ -34,8 +34,6 @@
     
      </style>
      <body>
-    <div style="background: url(/funauta/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
-     </div>
      <h1 align="center">MEDICAMENTOS RECIBIDO POR PACIENTE</h1>
      <table class="zebra">
       <thead>
