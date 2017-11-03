@@ -50,7 +50,7 @@ class Mensualidad extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_pago' => 'Numero de pago',
+            'id_pago' => 'Numero de referencia',
             'fecha' => 'Fecha',
             'banco' => 'Banco',
             'rte_cedula' => 'Representante',

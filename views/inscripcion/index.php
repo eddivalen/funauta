@@ -7,7 +7,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$this->title = 'Paciente';
+$this->title = 'Inscripción de Pacientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-index">

@@ -94,9 +94,9 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
              </div>                                                                         
             <p>Historial de terapias que el paciente ha tenido</p>
 
-            <?= $form->field($hisTerapias, 'tiempo')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($hisTerapias, 'tiempo')->textarea(['rows' => '3']) ?>
 
-            <?= $form->field($hisTerapias, 'descripcion')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($hisTerapias, 'descripcion')->textarea(['rows' => '4']) ?>
             
             <div class="form-group">
                 <?= Html::submitButton($paciente->isNewRecord ? 'Guardar' : 'Actualizar', ['class' => $paciente->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

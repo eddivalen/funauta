@@ -39,7 +39,7 @@
       <thead>
        <tr>
         <th>No</th>
-        <th>ID PAGO</th>
+        <th>NRO REFERENCIA</th>
         <th>FECHA</th>
         <th>BANCO</th>
         <th>REPRESENTANTE</th>
