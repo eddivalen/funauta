@@ -22,7 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'id_pago',
-            'fecha',
+            [
+                'attribute' => 'fecha',
+                'format' => ['date','php:d/m/Y']
+            ],
             'banco',
             'rte_cedula',
             'monto',

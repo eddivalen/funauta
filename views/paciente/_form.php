@@ -35,7 +35,7 @@ use kartik\date\DatePicker;
             <?= $form->field($model, 'sexo')->dropDownList([ 'M' => 'M', 'F' => 'F', ], ['prompt' => '']) ?>
 
             <?= $form->field($model, 'rte_cedula')->widget(Select2::classname(), [
-                'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula'),
+                'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula','fullName'),
                 'language' => 'en',
                 'options' => ['placeholder' => 'Elegir Cedula'],
                 'pluginOptions' => [

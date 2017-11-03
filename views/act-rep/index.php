@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'rte_cedula',
-                'value'=>'rteCedula.nombre',
-                'label'=>'Nombre',
+                'value'=>'rteCedula.fullName',
+                'label'=>'Representante',
             ],
             [
                 'attribute'=>'id',

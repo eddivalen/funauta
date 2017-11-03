@@ -35,10 +35,14 @@ use kartik\field\FieldRange;
 	<div class="col-lg-6">
 	    
 
-		<?= $form->field($mensualidad, 'rte_cedula')->dropDownList(
-	                ArrayHelper::map(Representante::find()->all(), 'cedula', 'nombre','apellido'),
-	                ['prompt'=>'Elegir Representante']
-	            )->label('Cedula del Representante')?>
+	    <?= $form->field($mensualidad, 'rte_cedula')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula','fullName'),
+        'language' => 'en',
+        'options' => ['placeholder' => 'Elegir cedula representante'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    	])->label('Cedula Representante')?>
 	
 
 	    <?=$form->field($mensualidad_meses, 'mes')->widget(DatePicker::classname(), [

@@ -52,7 +52,9 @@ class Especialista extends \yii\db\ActiveRecord
             'correo' => 'Correo',
         ];
     }
-
+    public function getfullName(){
+                return $this->nombre.' '.$this->apellido;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

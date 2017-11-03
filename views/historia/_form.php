@@ -6,6 +6,7 @@ use app\models\Tratamiento;
 use app\models\Terapia;
 use app\models\Especialista;
 use kartik\date\DatePicker;
+use kartik\select2\Select2;
 ?>
 <div class="historia-form">
     <div class="col-lg-6">
@@ -29,11 +30,15 @@ use kartik\date\DatePicker;
                 ArrayHelper::map(Terapia::find()->all(), 'id', 'descripcion'),
                 ['prompt'=>'Elegir Terapia']
             )->label('Terapia')?>
-            
-            <?= $form->field($model, 'tta_eta_cedula')->dropDownList(
-                ArrayHelper::map(Especialista::find()->all(), 'cedula', 'nombre'),
-                ['prompt'=>'Elegir Especialista']
-            )->label('Especialista')?>
+
+            <?= $form->field($model, 'tta_eta_cedula')->widget(Select2::classname(), [
+                'data' => ArrayHelper::map(Especialista::find()->all(),'cedula','cedula','fullName'),
+                'language' => 'es',
+                'options' => ['placeholder' => 'Elegir Cedula'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])->label('Cedula Especialista')?>
 
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

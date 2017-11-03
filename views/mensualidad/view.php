@@ -6,9 +6,10 @@ use yii\data\ActiveDataProvider;
 use app\models\MensualidadMeses;
 use yii\grid\GridView;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
+ $formatter = \Yii::$app->formatter;
+ Yii::$app->formatter->locale = 'es-ES';
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 
-setlocale(LC_ALL,"es_ES");
 /* @var $this yii\web\View */
 /* @var $model app\models\Mensualidad */
 $this->title = $mensualidad->id_pago;
@@ -40,7 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'model' => $mensualidad,
                             'attributes' => [
                                 'id_pago',
-                                'fecha',
+                                 [
+                                    'attribute' => 'fecha',
+                                    'format' => ['date','php:d/m/Y']
+                                ],
                                 'banco',
                                 [
                                     'attribute'=>'rte_cedula',
@@ -62,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'mdd_id',
                                 [
                                    'attribute' => 'mes',
-                                   'format'    => ['date', 'php:F Y '] 
+                                   'format'    => ['date', 'php:F Y '],
                                 ],
                             ],
                         ]); ?>

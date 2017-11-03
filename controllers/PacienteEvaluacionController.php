@@ -50,10 +50,10 @@ class PacienteEvaluacionController extends Controller
      * @param string $fecha
      * @return mixed
      */
-    public function actionView($id, $fecha)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $fecha),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -67,7 +67,7 @@ class PacienteEvaluacionController extends Controller
         $model = new PacienteEvaluacion();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'fecha' => $model->fecha]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,12 +82,12 @@ class PacienteEvaluacionController extends Controller
      * @param string $fecha
      * @return mixed
      */
-    public function actionUpdate($id, $fecha)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $fecha);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'fecha' => $model->fecha]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -102,9 +102,9 @@ class PacienteEvaluacionController extends Controller
      * @param string $fecha
      * @return mixed
      */
-    public function actionDelete($id, $fecha)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $fecha)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -117,9 +117,9 @@ class PacienteEvaluacionController extends Controller
      * @return PacienteEvaluacion the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $fecha)
+    protected function findModel($id)
     {
-        if (($model = PacienteEvaluacion::findOne(['id' => $id, 'fecha' => $fecha])) !== null) {
+        if (($model = PacienteEvaluacion::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
                          <h4>Evaluacion del paciente</h4>
                     </div>
                     <p>
-                        <?= Html::a('Actualizar', ['update', 'id' => $model->fecha], ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a('Eliminar', ['delete', 'id' => $model->fecha], [
+                        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
                             'class' => 'btn btn-danger',
                             'data' => [
                                 'confirm' => '¿Está seguro de eliminar este elemento?',
@@ -33,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= DetailView::widget([
                                 'model' => $model,
                                 'attributes' => [
-                                    'fecha',
+                                     [
+                                        'attribute' => 'fecha',
+                                        'format' => ['date','php:d/m/Y']
+                                    ],
                                     [
                                         'attribute'=>'pte_cedula',
                                         'label'=>'Cedula del Paciente',

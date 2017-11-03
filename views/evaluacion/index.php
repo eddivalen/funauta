@@ -8,7 +8,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $searchModel app\models\EvaluacionSerch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Evaluacions';
+$this->title = 'Evaluaciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="evaluacion-index">

@@ -21,20 +21,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'fecha',
+             [
+                'attribute' => 'fecha',
+                'format' => ['date','php:d/m/Y']
+            ],
             [
                 'attribute'=>'pte_cedula',
                 'label'=>'Cedula del Paciente',
             ],
             [
                 'attribute'=>'descripcion',
-                'value'=>'pteCedula.nombre',
+                'value'=>'pteCedula.fullName',
                 'label'=>'Nombre del Paciente',
             ],
             [
                 'attribute'=>'eta_cedula',
-                'value'=>'etaCedula.nombre',
+                'value'=>'etaCedula.fullName',
                 'label'=>'Nombre del Especialista',
             ],
             [

@@ -1,6 +1,8 @@
 <?php
   use yii\helpers\Html;
   use yii\grid\GridView;
+  $formatter = \Yii::$app->formatter;
+
 ?>
      <style type="text/css">
       body {
@@ -45,6 +47,7 @@
        </tr>
       </thead>
       <?php
+      setlocale(LC_TIME, "es_ES");
        $i=1;
        foreach($model as $data){
         
@@ -52,7 +55,7 @@
          <tr>
           <td>'.$i.'</td>
           <td>'.$data['id_pago'].'</td>
-          <td>'.$data['fecha'].'</td>
+          <td>'.Yii::$app->formatter->asDate($data['fecha'], 'dd/MM/yyyy').'</td>
           <td>'.$data['banco'].'</td>
           <td>'.$data->rteCedula->nombre.' '.$data->rteCedula->apellido.'</td>
           <td>'.$data['monto'].'</td>

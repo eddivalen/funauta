@@ -39,7 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ], 
                                 'nombre',
                                 'apellido',
-                                'fecha_nacimiento',
+                                [
+                                    'attribute'=>'fecha_nacimiento',
+                                    'label'=>'Fecha de Nacimiento',
+                                    'format' => ['date','php:d/m/Y'],
+                                ],
                                 'lugar_nacimiento',
                                 'edad',
                                 'sexo',

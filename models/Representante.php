@@ -75,6 +75,9 @@ class Representante extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getfullName(){
+                return $this->nombre.' '.$this->apellido;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

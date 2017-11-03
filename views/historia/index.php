@@ -25,8 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'fecha',
+             [
+                'attribute' => 'fecha',
+                'format' => ['date','php:d/m/Y']
+            ],
             'observaciones',
             [
                 'attribute'=>'tto_id',

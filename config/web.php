@@ -56,6 +56,14 @@ $config = [
                 ],
             ],
         ],
+        'formatter' => [
+            'dateFormat' => 'dd/MM/yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'Bs',
+            'locale' => 'es-ES',
+            'defaultTimeZone' => 'America/Caracas',
+       ],
         /*'view' => [
             'theme' => [
                 'pathMap' => [

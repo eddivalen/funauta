@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
 use app\models\Paciente;
 use app\models\Especialista;
+use kartik\select2\Select2;
 ?>
 <div class="paciente-evaluacion-form">
     <div class="col-lg-6">
@@ -17,14 +18,25 @@ use app\models\Especialista;
                 ]
             ])->label('Fecha de Evaluación');?>
             
-            <?= $form->field($model, 'pte_cedula')->dropDownList(
-                ArrayHelper::map(Paciente::find()->all(), 'cedula', 'cedula'),
-                ['prompt'=>'Elegir Paciente']
-            )->label('Cedula del Paciente')?>
-            <?= $form->field($model, 'eta_cedula')->dropDownList(
-                ArrayHelper::map(Especialista::find()->all(), 'cedula', 'cedula'),
-                ['prompt'=>'Elegir Especialista']
-            )->label('Cedula del Especialista')?>
+
+            <?= $form->field($model, 'pte_cedula')->widget(Select2::classname(), [
+            'data' => ArrayHelper::map(Paciente::find()->all(),'cedula','cedula','fullName'),
+            'language' => 'en',
+            'options' => ['placeholder' => 'Elegir Paciente'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+            ])->label('Cedula del Paciente')?>
+
+            <?= $form->field($model, 'eta_cedula')->widget(Select2::classname(), [
+            'data' => ArrayHelper::map(Especialista::find()->all(),'cedula','cedula','fullName'),
+            'language' => 'en',
+            'options' => ['placeholder' => 'Elegir Especialista'],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+            ])->label('Cedula del Especialista')?>
+
     </div>
     <div class="col-lg-6">
             <?= $form->field($model, 'motivo')->textarea(['rows' => '4']) ?>

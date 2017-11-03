@@ -72,7 +72,9 @@ class Paciente extends \yii\db\ActiveRecord
             'nca_id' => 'Nucleo familiar',
         ];
     }
-
+    public function getfullName(){
+                return $this->nombre.' '.$this->apellido;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

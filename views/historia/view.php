@@ -33,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= DetailView::widget([
                             'model' => $model,
                             'attributes' => [
-                                'fecha',
+                                 [
+                                    'attribute' => 'fecha',
+                                    'format' => ['date','php:d/m/Y']
+                                ],
                                 'observaciones',
                                 [
                                     'attribute'=>'tto_id',

@@ -16,13 +16,13 @@ use kartik\select2\Select2;
     )->label('Actividad')?>
 
     <?= $form->field($model, 'rte_cedula')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula'),
+        'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula','fullName'),
         'language' => 'en',
         'options' => ['placeholder' => 'Elegir Cedula'],
         'pluginOptions' => [
             'allowClear' => true
         ],
-    ])->label('Cedula Representante')?>
+        ])->label('Cedula Representante')?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Asignar' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
