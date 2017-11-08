@@ -32,7 +32,8 @@
     
      </style>
      <body>
-     <h1 align="center">ESPECIALISTA ASIGNADO POR PACIENTE</h1>
+     <h1 align="center" style="font-style: bold;">ESPECIALISTA ASIGNADO POR PACIENTE</h1>
+     <h3 align="center" style="font-style: bold;"><?php echo date('d/m/Y') ?></h3>
      <table class="zebra">
       <thead>
        <tr>

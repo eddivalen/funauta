@@ -42,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'rango_fecha',
             'value' => 'fecha',
             'format'=>'raw',
-            'format' => ['date','php:d/m/Y'],
             'options' => ['style' => 'width: 25%;'],
             'filter' => DateRangePicker::widget([
                 'model' => $searchModel,
