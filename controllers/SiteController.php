@@ -137,7 +137,7 @@ class SiteController extends Controller
      $subject = "Recuperar password";
      $body = "<p>Copie el siguiente código de verificación para restablecer su password ... ";
      $body .= "<strong>".$verification_code."</strong></p>";
-     $body .= "<p><a href='http://yii.local/index.php?r=site/resetpass'>Recuperar password</a></p>";
+     $body .= "<p><a href='http://funauta.org/index.php?r=site/resetpass'>Recuperar password</a></p>";
 
      //Enviamos el correo
      Yii::$app->mailer->compose()

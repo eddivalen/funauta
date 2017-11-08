@@ -45,6 +45,13 @@ $config = [
                 'password'   => 'funautaadmin',
                 'port'       => '587',
                 'encryption' => 'tls',
+                'streamOptions' => [
+                    'ssl' => [
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    ],
+                ],
             ],
         ],
         'log' => [
