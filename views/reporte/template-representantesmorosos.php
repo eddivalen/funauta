@@ -33,7 +33,8 @@
      </style>
      <body>
      </div>
-     <h1 align="center">REPRESENTANTES EN MORA</h1>
+     <h1 align="center" style="font-style: bold;">REPRESENTANTES EN MORA</h1>
+     <h3 align="center" style="font-style: bold;"><?php echo date('d/m/Y') ?></h3>
      <table class="zebra">
       <thead>
        <tr>
