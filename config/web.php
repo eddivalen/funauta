@@ -39,11 +39,11 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => false,
             'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'inscripcionesfunauta@gmail.com',
-                'password' => 'funautaadmin',
-                'port' => '587',
+                'class'      => 'Swift_SmtpTransport',
+                'host'       => 'smtp.gmail.com',
+                'username'   => 'inscripcionesfunauta@gmail.com',
+                'password'   => 'funautaadmin',
+                'port'       => '587',
                 'encryption' => 'tls',
             ],
         ],
