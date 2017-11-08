@@ -29,7 +29,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     //         'accessToken' => '101-token',
     //     ],
     // ];
-
+    public function rules()
+    {
+        return [
+            [['role'], 'required'],
+            [['role'], 'integer'],
+        ];
+    }
 
     /**
      * @inheritdoc

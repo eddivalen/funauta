@@ -15,5 +15,13 @@ class Users extends ActiveRecord{
     {
         return 'users';
     }
-    
+     public function rules()
+    {
+        return [
+            [['role','username','email','password'], 'required'],
+            [['role'], 'integer'],
+            [['username', 'email'], 'string', 'max' => 255],
+            [['password'], 'string', 'max' => 250],
+        ];
+    }
 }
