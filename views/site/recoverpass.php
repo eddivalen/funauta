@@ -13,7 +13,7 @@ $this->title = 'Recuperar contraseña';
 ]);
 ?>
 <div class="form-group">
- <?= $form->field($model, "email")->input("email") ?>  
+ <?= $form->field($model, "email")->input("email")->label('Correo electrónico') ?>  
 </div>
  
 <?= Html::submitButton("Recuperar Contraseña", ["class" => "btn btn-primary"]) ?>

@@ -15,19 +15,19 @@ $this->title = 'Registrarse';
 ]);
 ?>
 <div class="form-group">
- <?= $form->field($model, "username")->input("text") ?>   
+ <?= $form->field($model, "username")->input("text")->label('Nombre de usuario') ?>   
 </div>
 
 <div class="form-group">
- <?= $form->field($model, "email")->input("email") ?>   
+ <?= $form->field($model, "email")->input("email")->label('Correo electrónico') ?>   
 </div>
 
 <div class="form-group">
- <?= $form->field($model, "password")->input("password") ?>   
+ <?= $form->field($model, "password")->input("password")->label('Contraseña') ?>   
 </div>
 
 <div class="form-group">
- <?= $form->field($model, "password_repeat")->input("password") ?>   
+ <?= $form->field($model, "password_repeat")->input("password")->label('Repetir contraseña') ?>   
 </div>
 
 <?= Html::submitButton("Registrarse", ["class" => "btn btn-primary"]) ?>

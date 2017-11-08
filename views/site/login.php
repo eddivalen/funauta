@@ -70,10 +70,10 @@ $fieldOptions2 = [
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <p class=""><a href="/funauta/web/index.php?r=site/register">Registrarse</a></p>
+                        <p class=""><a href="/index.php?r=site/register">Registrarse</a></p>
                     </div>
                     <div class="col-xs-6">
-                        <p style="margin-left:30px;"class=""><a href="/funauta/web/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
+                        <p style="margin-left:30px;"class=""><a href="/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
                     </div>  
                 </div>
             

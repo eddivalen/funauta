@@ -40,7 +40,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
             <div class="col-lg-6">
 
             <?= $form->field($paciente, 'rte_cedula')->widget(Select2::classname(), [
-                'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula'),
+                'data' => ArrayHelper::map(Representante::find()->all(),'cedula','cedula','fullName'),
                 'language' => 'en',
                 'options' => ['placeholder' => 'Elegir Cedula'],
                 'pluginOptions' => [

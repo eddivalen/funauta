@@ -15,19 +15,19 @@ $this->title = 'Reiniciar contraseña';
 ?>
 
 <div class="form-group">
- <?= $form->field($model, "email")->input("email") ?>  
+ <?= $form->field($model, "email")->input("email")->label('Correo electrónico') ?>  
 </div>
  
 <div class="form-group">
- <?= $form->field($model, "password")->input("password") ?>  
+ <?= $form->field($model, "password")->input("password")->label('Contraseña') ?>  
 </div>
  
 <div class="form-group">
- <?= $form->field($model, "password_repeat")->input("password") ?>  
+ <?= $form->field($model, "password_repeat")->input("password")->label('Repetir Contraseña') ?>  
 </div>
 
 <div class="form-group">
- <?= $form->field($model, "verification_code")->input("text") ?>  
+ <?= $form->field($model, "verification_code")->input("text")->label('Código de verificación') ?>  
 </div>
 
 <div class="form-group">

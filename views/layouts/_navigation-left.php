@@ -37,13 +37,13 @@ $arrowIcon = FA::i('arrow')->tag('span');
 			<li><?php if(Yii::$app->user->isGuest){?><!-- Login -->
 				<?= Html::a(
 				FA::fw('users') . 'Iniciar sesión',
-				Url::to("/funauta/web/index.php?r=site/login"))
+				Url::to("/index.php?r=site/login"))
 				?><?php } ?>
 			</li>
 			<li><?php if(Yii::$app->user->isGuest){?><!-- Login -->
 				<?= Html::a(
 				FA::fw('envelope') . 'Contacto',
-				Url::to("/funauta/web/index.php?r=site/contact"))
+				Url::to("/index.php?r=site/contact"))
 				?><?php } ?>
 			</li>
 			<li><?php if($simple){ ?> <!-- Inscripcion -->
