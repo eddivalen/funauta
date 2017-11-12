@@ -30,6 +30,16 @@ use kartik\field\FieldRange;
 	    <?= $form->field($mensualidad, 'banco')->dropDownList([ 
 		'Banco de Venezuela' => 'Banco de Venezuela', 
 		'Banco Bicentenario' => 'Banco Bicentenario', 
+		'Banesco'            => 'Banesco', 
+		'BOD' => 'BOD', 
+		'BBVA Provincial' => 'BBVA Provincial', 
+		'Banco Sofitasa' => 'Banco Sofitasa',
+		'Banco Mercantil' => 'Banco Mercantil', 
+		'Banco Exterior' => 'Banco Exterior', 
+		'BNC' => 'BNC', 
+		'Banco Fondo Común' => 'Banco Fondo Común',
+		'Banco Activo' => 'Banco Activo',
+		'100% Banco' => '100% Banco',
 		],['prompt'           => 'Seleccione el banco']) ?> 
 	</div>
 	<div class="col-lg-6">
