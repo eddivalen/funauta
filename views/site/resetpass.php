@@ -2,12 +2,11 @@
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-$this->title = 'Reiniciar contraseña';
+$this->title = 'Reestablecer Contraseña';
 ?>
  
 <h3><?= $msg ?></h3>
  
-<h1>Resetear Contraseña</h1>
 <?php $form = ActiveForm::begin([
     'method' => 'post',
     'enableClientValidation' => true,

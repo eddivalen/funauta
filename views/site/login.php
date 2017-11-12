@@ -76,6 +76,11 @@ $fieldOptions2 = [
                         <p style="margin-left:30px;"class=""><a href="/index.php?r=site/recoverpass">Olvidaste tu contraseña?</a></p>
                     </div>  
                 </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class=""><a href="/index.php?">Menú de inicio</a></p>
+                    </div>
+                </div>
             
             <?php ActiveForm::end(); ?>
     </div>
