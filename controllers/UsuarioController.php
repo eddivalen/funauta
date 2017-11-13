@@ -81,11 +81,16 @@ class UsuarioController extends Controller
     public function actionCreate()
     {
         $model = new Users();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
+        $request = crypt(Yii::$app->request->post('Users')['password'], Yii::$app->params["salt"]);
+        $model->password = $request;
+        if(Yii::$app->request->post()){
+            $array = array_merge(array(), Yii::$app->request->post());
+            $array["Users"]["password"] = $request;
+            if ($model->load($array) && $model->save()) {
+              return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }else {
+            return $this->render('update', [
                 'model' => $model,
             ]);
         }
