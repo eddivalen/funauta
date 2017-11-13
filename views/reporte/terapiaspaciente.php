@@ -23,7 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'params'=>[
                 'get'       => json_encode(Yii::$app->request->get()),
             ],
-        ], 
+        ],
+        'target' => '_blank',  
         ]);?>
     </p> 
 </div>

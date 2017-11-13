@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\daterange\DateRangePicker;
 $this->registerCssFile("../web/css/style.css");
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
@@ -23,7 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'id_pago',
             [
-                'attribute' => 'fecha',
+                'attribute' => 'rango_fecha',
+                'value' => 'fecha',
+                'format'=>'raw',
+                'options' => ['style' => 'width: 25%;'],
+                'filter' => DateRangePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'rango_fecha',
+                    'useWithAddon'=>false,
+                    'convertFormat'=>true,
+                    'pluginOptions'=>[
+                        'locale'=>['format'=>'Y-m-d']
+                    ],
+                ]),
                 'format' => ['date','php:d/m/Y']
             ],
             'banco',

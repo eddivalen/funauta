@@ -79,7 +79,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-pagos',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-de-pagos.pdf', 'I');
       }
     	return $this->render('pagosperiodo', [
     			'mensualidad' 		=>$mensualidad,
@@ -112,7 +112,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-pacienteespecialista',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-paciente-especialista.pdf', 'I');
       }
     	return $this->render('pacienteespecialista', [
 				'historia'     =>$historia,
@@ -140,7 +140,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-terapiapaciente',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-terapia-paciente.pdf', 'I');
       }
         return $this->render('terapiapaciente', [
                 'terapiapaciente' =>$terapiapaciente,
@@ -168,7 +168,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-tratamientopaciente',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-tratamiento-paciente.pdf', 'I');
       }
         return $this->render('tratamientopaciente', [
                 'tratamiento'  =>$tratamiento,
@@ -196,7 +196,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-medicamentopaciente',['model'=>$array]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-medicamento-paciente.pdf', 'I');
       }
         return $this->render('medicamentopaciente', [
                 'tratamiento'  =>$tratamiento,
@@ -233,7 +233,7 @@ class ReporteController extends \yii\web\Controller
         $mpdf->SetHTMLHeader('<div style="background: url(/imagen/funauta3.jpg) center no-repeat; width: 100%; height: 90px;">
             </div>');
         $mpdf->WriteHTML($this->renderPartial('template-representantesmorosos',['model'=>$models]));
-        $mpdf->Output('MyPDF.pdf', 'I');
+        $mpdf->Output('Reporte-representantes-morosos.pdf', 'I');
       }
         return $this->render('representantesmorosos', [
                 'mensualidad'       =>$mensualidad,
