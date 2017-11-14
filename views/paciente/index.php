@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $searchModel,
                     'attribute' => 'fecha_nacimiento',
                     'pluginOptions'=>[
+                        'autoclose'=>true,
                         'format' => 'yyyy-m-d',
                     ],
                 ]),

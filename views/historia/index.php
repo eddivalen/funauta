@@ -50,13 +50,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'tta_eta_cedula',
-                'value'=>'ttaTpa.etaCedula.nombre',
+                'value'=>'ttaTpa.etaCedula.fullName',
                 'label'=>'Especialista',
             ],
             [
-                'value'=>function($model){
-                    return $model->tto->pteCedula->nombre.' '.$model->tto->pteCedula->apellido;
-                },
+                'value'=>'tto.pteCedula.fullName',
                 'label'=>'Paciente',
             ],
 
