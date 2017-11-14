@@ -14,11 +14,11 @@ use kartik\select2\Select2;
 
         <?= $form->field($model, 'apellido')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'nacionalidad')->dropDownList([ 'V' => 'V', 'E' => 'E', ], ['prompt' => 'Seleccione nacionalidad']) ?>
+        <?= $form->field($model, 'nacionalidad')->dropDownList([ 'V' => 'Venezolana', 'E' => 'Extranjera', ], ['prompt' => 'Seleccione nacionalidad']) ?>
 
         <?= $form->field($model, 'edad')->textInput() ?>
 
-        <?= $form->field($model, 'edo_civil')->dropDownList([ 'S' => 'S', 'C' => 'C', 'V' => 'V', 'D' => 'D', ], ['prompt' => 'Seleccione Estado civil'])->label('Estado civil') ?>
+        <?= $form->field($model, 'edo_civil')->dropDownList([ 'S' => 'Soltero', 'C' => 'Casado', 'V' => 'Viudo', 'D' => 'Divorciado', ], ['prompt' => 'Seleccione Estado civil'])->label('Estado civil') ?>
 
         <?= $form->field($model, 'direccion')->textInput(['maxlength' => true]) ?>
 

@@ -29,7 +29,8 @@ class Actividades extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descripcion', 'nombre_act'], 'string', 'max' => 45],
+            [['nombre_act'], 'string', 'max' => 45],
+            [['descripcion'], 'string', 'max' => 255],
         ];
     }
 
@@ -40,8 +41,8 @@ class Actividades extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'descripcion' => 'Descripcion',
-            'nombre_act' => 'Nombre Act',
+            'descripcion' => 'Descripción',
+            'nombre_act' => 'Nombre Actividad',
         ];
     }
 

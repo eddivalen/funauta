@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use p2made\helpers\FA;
+use kartik\date\DatePicker;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteSerch */
@@ -14,11 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paciente-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Crear Paciente', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,8 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'nombre',
             'apellido',
             [
-                'attribute'=>'fecha_nacimiento',
-                'label'=>'Fecha de Nacimiento',
+                'attribute' => 'fecha_nacimiento',
+                'value' => 'fecha_nacimiento',
+                'options' => ['style' => 'width: 25%;'],
+                'filter' => DatePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'fecha_nacimiento',
+                    'pluginOptions'=>[
+                        'format' => 'yyyy-m-d',
+                    ],
+                ]),
                 'format' => ['date','php:d/m/Y'],
             ],
             [

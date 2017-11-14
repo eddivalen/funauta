@@ -24,4 +24,12 @@ class Users extends ActiveRecord{
             [['password'], 'string', 'max' => 250],
         ];
     }
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nombre de usuario',
+            'password' => 'Contraseña',
+            'role'     => 'Rol'
+        ];
+    }
 }

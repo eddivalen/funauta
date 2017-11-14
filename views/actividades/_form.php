@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'nombre_act')->textInput(['maxlength' => true])->label('Nombre') ?>
 
-	<?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
+	<?= $form->field($model, 'descripcion')->textarea(['rows' => '3'])?>
 
 	<div class="form-group">
 	    <?= Html::submitButton($model->isNewRecord ? 'Crear' : 'Actualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -31,10 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= DetailView::widget([
                             'model' => $model,
                             'attributes' => [
-                                'id',
                                 'username',
                                 'email:email',
-                                'role',
+                                [
+                                'attribute'=>'role',
+                                'value'=>function($model){
+                                    if($model->role == 1){
+                                        return 'Usuario'; 
+                                    }else{
+                                        return 'Administrador';
+                                    }   
+                                    },
+                                'label'=>'Rol',
+                                ],
                             ],
                         ]) ?>
                     </div>

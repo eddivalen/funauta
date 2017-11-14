@@ -14,7 +14,8 @@ use kartik\select2\Select2;
             'options' => ['placeholder' => 'Introduce la fecha'],
             'pluginOptions' => [
                 'autoclose'=>true,
-                'format' => 'yyyy-mm-dd'
+                'format' => 'yyyy-mm-dd',
+                'todayHighlight' => true,
                 ]
             ])->label('Fecha de Evaluación');?>
             

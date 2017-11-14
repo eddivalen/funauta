@@ -36,9 +36,41 @@ $this->params['breadcrumbs'][] = $this->title;
                             'cedula',
                             'nombre',
                             'apellido',
-                            'nacionalidad',
+                            [
+                                'attribute'=>'nacionalidad',
+                                'value'=>function($model){
+                                    switch ($model->nacionalidad) {
+                                        case 'V':
+                                             return 'Venezolana'; 
+                                        break;
+                                        case 'E':
+                                             return 'Extranjera'; 
+                                        break;
+                                    } 
+                                    },
+                                'label'=>'Estado civil',
+                            ],
                             'edad',
-                            'edo_civil',
+                            [
+                                'attribute'=>'edo_civil',
+                                'value'=>function($model){
+                                    switch ($model->edo_civil) {
+                                        case 'S':
+                                             return 'Soltero'; 
+                                        break;
+                                        case 'D':
+                                             return 'Divorciado'; 
+                                        break;
+                                        case 'V':
+                                             return 'Viudo'; 
+                                        break;
+                                        case 'C':
+                                             return 'Casado'; 
+                                        break;
+                                    } 
+                                    },
+                                'label'=>'Estado civil',
+                            ],
                             'direccion',
                             'telefono_local',
                             'telefono_celular',

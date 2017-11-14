@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use p2made\helpers\FA;
+use kartik\date\DatePicker;
 p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PacienteEvaluacionSerch */
@@ -21,9 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-             [
+            [
                 'attribute' => 'fecha',
-                'format' => ['date','php:d/m/Y']
+                'value' => 'fecha',
+                'options' => ['style' => 'width: 25%;'],
+                'filter' => DatePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'fecha',
+                    'pluginOptions'=>[
+                        'format' => 'yyyy-m-d',
+                    ],
+                ]),
+                'format' => ['date','php:d/m/Y'],
             ],
             [
                 'attribute'=>'pte_cedula',

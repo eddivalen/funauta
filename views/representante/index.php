@@ -24,7 +24,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'cedula',
             'nombre',
             'apellido',
-            'nacionalidad',
+            [
+                'attribute'=>'nacionalidad',
+                'value'=>function($model){
+                    switch ($model->nacionalidad) {
+                        case 'V':
+                             return 'Venezolana'; 
+                        break;
+                        case 'E':
+                             return 'Extranjera'; 
+                        break;
+                    } 
+                    },
+                'filter' => array("V"=>"Venezolana","E"=>"Extranjera"),
+                'label'=>'Nacionalidad',
+            ],
             'edad',
             // 'edo_civil',
             // 'direccion',

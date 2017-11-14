@@ -41,8 +41,8 @@ class ActRep extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ate_id' => 'Ate ID',
-            'rte_cedula' => 'Rte Cedula',
+            'ate_id' => 'Actividad',
+            'rte_cedula' => 'Representante',
         ];
     }
 

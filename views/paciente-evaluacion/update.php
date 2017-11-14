@@ -8,7 +8,7 @@ p2made\theme\sbAdmin\assets\SBAdmin2Asset::register($this);
 
 $this->title = 'Actualizar';
 $this->params['breadcrumbs'][] = ['label' => 'Paciente Evaluacion', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->pteCedula->nombre, 'url' => ['view', 'id' => $model->fecha]];
+$this->params['breadcrumbs'][] = ['label' => $model->pteCedula->nombre, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="body-content">

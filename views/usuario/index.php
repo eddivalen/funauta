@@ -20,11 +20,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'username',
             'email:email',
-
+            [
+                'attribute'=>'role',
+                'value'=>function($model){
+                    if($model->role == 1){
+                       return 'Usuario'; 
+                    }else{
+                        return 'Administrador';
+                    }   
+                },
+                'filter' => array("1"=>"Usuario","2"=>"Administrador"),
+                'label'=>'Rol',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
